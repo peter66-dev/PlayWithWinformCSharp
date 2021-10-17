@@ -1,0 +1,5 @@
+{
+  "ConnectionString": {
+    "FStoreDB": "Server=(local);uid=sa;pwd=sa;database=FStore"
+  }
+}
