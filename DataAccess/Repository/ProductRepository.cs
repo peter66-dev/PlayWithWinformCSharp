@@ -9,6 +9,7 @@ namespace DataAccess.Repository
 {
     public class ProductRepository : IProductRepository
     {
+        public List<string> CheckQuantity(List<ProductObject> cart) => ProductDAO.Instance.CheckQuantity(cart);
         public void DeleteProduct(int id) => ProductDAO.Instance.DeleteProduct(id);
         public ProductObject GetProductByID(int id) => ProductDAO.Instance.GetProductByID(id);
         public ProductObject GetProductByIDAndName(int id, string name) => ProductDAO.Instance.GetProductByIDAndName(id, name);

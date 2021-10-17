@@ -16,5 +16,6 @@ namespace DataAccess.Repository
         public void InsertProduct(int cateID, string proName, string weight, decimal unitPrice, int stocks);
         public void DeleteProduct(int id);
         public void UpdateProduct(ProductObject pro);
+        public List<string> CheckQuantity(List<ProductObject> cart);
     }
 }

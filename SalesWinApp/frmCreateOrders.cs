@@ -224,9 +224,21 @@ namespace SalesWinApp
 
 
                 //Check quantity in stock!
-
-
-                btnSave.Enabled = true;
+                List<string> checkQuantityProduct = proRepository.CheckQuantity(cart);
+                if (checkQuantityProduct.Count == 0) // Check đủ -> ko add thêm , tiến hành add order | order detail -> btnSave_Click
+                {
+                    btnSave.Enabled = true;
+                }
+                else
+                {
+                    string msg = "";
+                    foreach (string str in checkQuantityProduct)
+                    {
+                        msg += str + " | ";
+                    }
+                    MessageBox.Show($"Sorry, we don't have enough quantity for products name: {msg}.\n" +
+                        $"Please cancel this bill!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
 
             }
         }
@@ -252,6 +264,8 @@ namespace SalesWinApp
                 };
                 orderDetailRepository.InsertOrderDetail(or);
             }
+
+            //Sub quantity in stock 
 
         }
         private void frmCreateOrders_FormClosing(object sender, FormClosingEventArgs e)

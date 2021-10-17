@@ -42,5 +42,11 @@ namespace BusinessObject
             UnitPrice = unitPrice;
             UnitsInStock = quantityBuy;
         }
+
+        public ProductObject(string proName, int quantityBuy)
+        {
+            ProductName = proName;
+            UnitsInStock = quantityBuy;
+        }
     }
 }

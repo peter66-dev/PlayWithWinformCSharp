@@ -249,5 +249,45 @@ namespace DataAccess
             }
             return pro;
         }
+
+        public List<string> CheckQuantity(List<ProductObject> cart)//Hàm trả về tên các sản phẩm ko đủ số lượng để cung cấp
+        {
+            List<string> result = new List<string>();
+            foreach (var pro in cart)
+            {
+                int quantity = GetQuantityByProID(pro.ProductID);
+                if (quantity < pro.UnitsInStock)
+                {
+                    result.Add(pro.ProductName);
+                }
+            }
+            return result;
+        }
+
+        int GetQuantityByProID(int proID)
+        {
+            int quantity = 0;
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select UnitsInStock from tblProduct where ProductID = @ProductID", connection);
+            command.Parameters.AddWithValue("@ProductID", proID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.Read())
+                {
+                    quantity = reader.GetInt32("UnitsInStock");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return quantity;
+        }
     }
 }
