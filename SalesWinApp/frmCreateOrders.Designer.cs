@@ -30,12 +30,7 @@ namespace SalesWinApp
         private void InitializeComponent()
         {
             this.dgvProductList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lbCustomerInformation = new System.Windows.Forms.Label();
             this.txtMemberID = new System.Windows.Forms.TextBox();
             this.lbMemberID = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
@@ -48,7 +43,7 @@ namespace SalesWinApp
             this.cboCountry = new System.Windows.Forms.ComboBox();
             this.txtDate = new System.Windows.Forms.DateTimePicker();
             this.lbOrderDate = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
+            this.lbProductDetails = new System.Windows.Forms.Label();
             this.txtProID = new System.Windows.Forms.TextBox();
             this.lbProID = new System.Windows.Forms.Label();
             this.txtCateID = new System.Windows.Forms.TextBox();
@@ -62,20 +57,25 @@ namespace SalesWinApp
             this.lbQuantityBuy = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.label15 = new System.Windows.Forms.Label();
-            this.textBox10 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.textBox11 = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.textBox12 = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBox13 = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
-            this.textBox14 = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.txtQuantityInStock = new System.Windows.Forms.TextBox();
+            this.lbCalculation = new System.Windows.Forms.Label();
+            this.txtSubTotal = new System.Windows.Forms.TextBox();
+            this.lbSubTotal = new System.Windows.Forms.Label();
+            this.txtDiscount = new System.Windows.Forms.TextBox();
+            this.lbDiscount = new System.Windows.Forms.Label();
+            this.txtGrandTotal = new System.Windows.Forms.TextBox();
+            this.lbGrandTotal = new System.Windows.Forms.Label();
+            this.txtPaidAmount = new System.Windows.Forms.TextBox();
+            this.lbPaidAmount = new System.Windows.Forms.Label();
+            this.txtReturnAmount = new System.Windows.Forms.TextBox();
+            this.lbReturnAmount = new System.Windows.Forms.Label();
             this.lbQuantityInStock = new System.Windows.Forms.Label();
             this.txtQuantityBuy = new System.Windows.Forms.NumericUpDown();
+            this.txtQuantityInStock = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnCheck = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantityBuy)).BeginInit();
             this.SuspendLayout();
@@ -85,52 +85,22 @@ namespace SalesWinApp
             this.dgvProductList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.dgvProductList.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvProductList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvProductList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4,
-            this.Column5});
+            this.dgvProductList.Enabled = false;
             this.dgvProductList.Location = new System.Drawing.Point(12, 242);
             this.dgvProductList.Name = "dgvProductList";
             this.dgvProductList.RowTemplate.Height = 25;
             this.dgvProductList.Size = new System.Drawing.Size(580, 307);
-            this.dgvProductList.TabIndex = 0;
+            this.dgvProductList.TabIndex = 100;
             // 
-            // Column1
+            // lbCustomerInformation
             // 
-            this.Column1.HeaderText = "Product ID";
-            this.Column1.Name = "Column1";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Category ID";
-            this.Column2.Name = "Column2";
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Product Name";
-            this.Column3.Name = "Column3";
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Unit Price";
-            this.Column4.Name = "Column4";
-            // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Quantity Buy";
-            this.Column5.Name = "Column5";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(192, 22);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Customer Information";
+            this.lbCustomerInformation.AutoSize = true;
+            this.lbCustomerInformation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbCustomerInformation.Location = new System.Drawing.Point(12, 9);
+            this.lbCustomerInformation.Name = "lbCustomerInformation";
+            this.lbCustomerInformation.Size = new System.Drawing.Size(192, 22);
+            this.lbCustomerInformation.TabIndex = 1000;
+            this.lbCustomerInformation.Text = "Customer Information";
             // 
             // txtMemberID
             // 
@@ -139,7 +109,7 @@ namespace SalesWinApp
             this.txtMemberID.Location = new System.Drawing.Point(449, 42);
             this.txtMemberID.Name = "txtMemberID";
             this.txtMemberID.Size = new System.Drawing.Size(120, 22);
-            this.txtMemberID.TabIndex = 2;
+            this.txtMemberID.TabIndex = 100;
             this.txtMemberID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbMemberID
@@ -159,7 +129,7 @@ namespace SalesWinApp
             this.txtCompanyName.Location = new System.Drawing.Point(735, 42);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(120, 22);
-            this.txtCompanyName.TabIndex = 2;
+            this.txtCompanyName.TabIndex = 100;
             this.txtCompanyName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbCompanyName
@@ -177,7 +147,7 @@ namespace SalesWinApp
             this.txtEmail.Location = new System.Drawing.Point(104, 42);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(181, 22);
-            this.txtEmail.TabIndex = 2;
+            this.txtEmail.TabIndex = 1;
             this.txtEmail.TextChanged += new System.EventHandler(this.txtEmail_TextChanged);
             // 
             // lbEmail
@@ -215,7 +185,7 @@ namespace SalesWinApp
             this.cboCity.Location = new System.Drawing.Point(104, 70);
             this.cboCity.Name = "cboCity";
             this.cboCity.Size = new System.Drawing.Size(133, 23);
-            this.cboCity.TabIndex = 4;
+            this.cboCity.TabIndex = 100;
             // 
             // cboCountry
             // 
@@ -225,7 +195,7 @@ namespace SalesWinApp
             this.cboCountry.Location = new System.Drawing.Point(449, 70);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(120, 23);
-            this.cboCountry.TabIndex = 4;
+            this.cboCountry.TabIndex = 100;
             // 
             // txtDate
             // 
@@ -233,7 +203,7 @@ namespace SalesWinApp
             this.txtDate.Location = new System.Drawing.Point(735, 73);
             this.txtDate.Name = "txtDate";
             this.txtDate.Size = new System.Drawing.Size(200, 22);
-            this.txtDate.TabIndex = 5;
+            this.txtDate.TabIndex = 2;
             // 
             // lbOrderDate
             // 
@@ -245,22 +215,22 @@ namespace SalesWinApp
             this.lbOrderDate.TabIndex = 3;
             this.lbOrderDate.Text = "Order Date";
             // 
-            // label8
+            // lbProductDetails
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label8.Location = new System.Drawing.Point(12, 111);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(137, 22);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "Product Details";
+            this.lbProductDetails.AutoSize = true;
+            this.lbProductDetails.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbProductDetails.Location = new System.Drawing.Point(12, 111);
+            this.lbProductDetails.Name = "lbProductDetails";
+            this.lbProductDetails.Size = new System.Drawing.Size(137, 22);
+            this.lbProductDetails.TabIndex = 100;
+            this.lbProductDetails.Text = "Product Details";
             // 
             // txtProID
             // 
             this.txtProID.Location = new System.Drawing.Point(104, 136);
             this.txtProID.Name = "txtProID";
             this.txtProID.Size = new System.Drawing.Size(133, 22);
-            this.txtProID.TabIndex = 2;
+            this.txtProID.TabIndex = 3;
             this.txtProID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtProID.TextChanged += new System.EventHandler(this.txtProID_TextChanged);
             // 
@@ -279,7 +249,7 @@ namespace SalesWinApp
             this.txtCateID.Location = new System.Drawing.Point(104, 164);
             this.txtCateID.Name = "txtCateID";
             this.txtCateID.Size = new System.Drawing.Size(133, 22);
-            this.txtCateID.TabIndex = 2;
+            this.txtCateID.TabIndex = 100;
             this.txtCateID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbCateID
@@ -298,7 +268,7 @@ namespace SalesWinApp
             this.txtProName.Location = new System.Drawing.Point(449, 136);
             this.txtProName.Name = "txtProName";
             this.txtProName.Size = new System.Drawing.Size(120, 22);
-            this.txtProName.TabIndex = 2;
+            this.txtProName.TabIndex = 100;
             this.txtProName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbProName
@@ -318,7 +288,7 @@ namespace SalesWinApp
             this.txtUnitPrice.Location = new System.Drawing.Point(449, 164);
             this.txtUnitPrice.Name = "txtUnitPrice";
             this.txtUnitPrice.Size = new System.Drawing.Size(120, 22);
-            this.txtUnitPrice.TabIndex = 2;
+            this.txtUnitPrice.TabIndex = 100;
             this.txtUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbUnitPrice
@@ -337,7 +307,7 @@ namespace SalesWinApp
             this.txtWeight.Location = new System.Drawing.Point(104, 192);
             this.txtWeight.Name = "txtWeight";
             this.txtWeight.Size = new System.Drawing.Size(133, 22);
-            this.txtWeight.TabIndex = 2;
+            this.txtWeight.TabIndex = 100;
             this.txtWeight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbWeight
@@ -367,7 +337,7 @@ namespace SalesWinApp
             this.btnAdd.Location = new System.Drawing.Point(872, 154);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 45);
-            this.btnAdd.TabIndex = 7;
+            this.btnAdd.TabIndex = 5;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -376,132 +346,123 @@ namespace SalesWinApp
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnSave.BackColor = System.Drawing.Color.DarkTurquoise;
-            this.btnSave.Location = new System.Drawing.Point(688, 503);
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Location = new System.Drawing.Point(769, 503);
             this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(167, 46);
-            this.btnSave.TabIndex = 8;
+            this.btnSave.Size = new System.Drawing.Size(139, 46);
+            this.btnSave.TabIndex = 9;
             this.btnSave.Text = "SAVE";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // label15
+            // lbCalculation
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.AutoSize = true;
-            this.label15.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label15.Location = new System.Drawing.Point(620, 242);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(166, 22);
-            this.label15.TabIndex = 1;
-            this.label15.Text = "Calculation Details";
+            this.lbCalculation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbCalculation.AutoSize = true;
+            this.lbCalculation.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbCalculation.Location = new System.Drawing.Point(620, 242);
+            this.lbCalculation.Name = "lbCalculation";
+            this.lbCalculation.Size = new System.Drawing.Size(166, 22);
+            this.lbCalculation.TabIndex = 100;
+            this.lbCalculation.Text = "Calculation Details";
             // 
-            // textBox10
+            // txtSubTotal
             // 
-            this.textBox10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox10.Enabled = false;
-            this.textBox10.Location = new System.Drawing.Point(716, 280);
-            this.textBox10.Name = "textBox10";
-            this.textBox10.Size = new System.Drawing.Size(153, 22);
-            this.textBox10.TabIndex = 2;
-            this.textBox10.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtSubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSubTotal.Enabled = false;
+            this.txtSubTotal.Location = new System.Drawing.Point(716, 280);
+            this.txtSubTotal.Name = "txtSubTotal";
+            this.txtSubTotal.Size = new System.Drawing.Size(153, 22);
+            this.txtSubTotal.TabIndex = 100;
+            this.txtSubTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label16
+            // lbSubTotal
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(624, 283);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(58, 15);
-            this.label16.TabIndex = 3;
-            this.label16.Text = "Sub Total";
+            this.lbSubTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbSubTotal.AutoSize = true;
+            this.lbSubTotal.Location = new System.Drawing.Point(624, 283);
+            this.lbSubTotal.Name = "lbSubTotal";
+            this.lbSubTotal.Size = new System.Drawing.Size(58, 15);
+            this.lbSubTotal.TabIndex = 3;
+            this.lbSubTotal.Text = "Sub Total";
             // 
-            // textBox11
+            // txtDiscount
             // 
-            this.textBox11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox11.Location = new System.Drawing.Point(716, 321);
-            this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new System.Drawing.Size(153, 22);
-            this.textBox11.TabIndex = 2;
-            this.textBox11.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtDiscount.Location = new System.Drawing.Point(716, 321);
+            this.txtDiscount.Name = "txtDiscount";
+            this.txtDiscount.Size = new System.Drawing.Size(153, 22);
+            this.txtDiscount.TabIndex = 6;
+            this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label17
+            // lbDiscount
             // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(624, 324);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(78, 15);
-            this.label17.TabIndex = 3;
-            this.label17.Text = "Discount (%)";
+            this.lbDiscount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbDiscount.AutoSize = true;
+            this.lbDiscount.Location = new System.Drawing.Point(624, 324);
+            this.lbDiscount.Name = "lbDiscount";
+            this.lbDiscount.Size = new System.Drawing.Size(56, 15);
+            this.lbDiscount.TabIndex = 3;
+            this.lbDiscount.Text = "Discount";
             // 
-            // textBox12
+            // txtGrandTotal
             // 
-            this.textBox12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox12.Enabled = false;
-            this.textBox12.Location = new System.Drawing.Point(716, 365);
-            this.textBox12.Name = "textBox12";
-            this.textBox12.Size = new System.Drawing.Size(153, 22);
-            this.textBox12.TabIndex = 2;
-            this.textBox12.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtGrandTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtGrandTotal.Enabled = false;
+            this.txtGrandTotal.Location = new System.Drawing.Point(716, 365);
+            this.txtGrandTotal.Name = "txtGrandTotal";
+            this.txtGrandTotal.Size = new System.Drawing.Size(153, 22);
+            this.txtGrandTotal.TabIndex = 100;
+            this.txtGrandTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label18
+            // lbGrandTotal
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(624, 368);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 15);
-            this.label18.TabIndex = 3;
-            this.label18.Text = "Grand Total";
+            this.lbGrandTotal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbGrandTotal.AutoSize = true;
+            this.lbGrandTotal.Location = new System.Drawing.Point(624, 368);
+            this.lbGrandTotal.Name = "lbGrandTotal";
+            this.lbGrandTotal.Size = new System.Drawing.Size(69, 15);
+            this.lbGrandTotal.TabIndex = 3;
+            this.lbGrandTotal.Text = "Grand Total";
             // 
-            // textBox13
+            // txtPaidAmount
             // 
-            this.textBox13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox13.Location = new System.Drawing.Point(716, 407);
-            this.textBox13.Name = "textBox13";
-            this.textBox13.Size = new System.Drawing.Size(153, 22);
-            this.textBox13.TabIndex = 2;
-            this.textBox13.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtPaidAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPaidAmount.Location = new System.Drawing.Point(716, 407);
+            this.txtPaidAmount.Name = "txtPaidAmount";
+            this.txtPaidAmount.Size = new System.Drawing.Size(153, 22);
+            this.txtPaidAmount.TabIndex = 7;
+            this.txtPaidAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label19
+            // lbPaidAmount
             // 
-            this.label19.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(624, 410);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(76, 15);
-            this.label19.TabIndex = 3;
-            this.label19.Text = "Paid Amount";
+            this.lbPaidAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbPaidAmount.AutoSize = true;
+            this.lbPaidAmount.Location = new System.Drawing.Point(624, 410);
+            this.lbPaidAmount.Name = "lbPaidAmount";
+            this.lbPaidAmount.Size = new System.Drawing.Size(76, 15);
+            this.lbPaidAmount.TabIndex = 3;
+            this.lbPaidAmount.Text = "Paid Amount";
             // 
-            // textBox14
+            // txtReturnAmount
             // 
-            this.textBox14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox14.Enabled = false;
-            this.textBox14.Location = new System.Drawing.Point(716, 453);
-            this.textBox14.Name = "textBox14";
-            this.textBox14.Size = new System.Drawing.Size(153, 22);
-            this.textBox14.TabIndex = 2;
-            this.textBox14.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtReturnAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtReturnAmount.Enabled = false;
+            this.txtReturnAmount.Location = new System.Drawing.Point(716, 453);
+            this.txtReturnAmount.Name = "txtReturnAmount";
+            this.txtReturnAmount.Size = new System.Drawing.Size(153, 22);
+            this.txtReturnAmount.TabIndex = 100;
+            this.txtReturnAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // label20
+            // lbReturnAmount
             // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(624, 456);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(89, 15);
-            this.label20.TabIndex = 3;
-            this.label20.Text = "Return Amount";
-            // 
-            // txtQuantityInStock
-            // 
-            this.txtQuantityInStock.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.txtQuantityInStock.Enabled = false;
-            this.txtQuantityInStock.Location = new System.Drawing.Point(449, 195);
-            this.txtQuantityInStock.Name = "txtQuantityInStock";
-            this.txtQuantityInStock.Size = new System.Drawing.Size(120, 22);
-            this.txtQuantityInStock.TabIndex = 2;
-            this.txtQuantityInStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lbReturnAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbReturnAmount.AutoSize = true;
+            this.lbReturnAmount.Location = new System.Drawing.Point(624, 456);
+            this.lbReturnAmount.Name = "lbReturnAmount";
+            this.lbReturnAmount.Size = new System.Drawing.Size(89, 15);
+            this.lbReturnAmount.TabIndex = 3;
+            this.lbReturnAmount.Text = "Return Amount";
             // 
             // lbQuantityInStock
             // 
@@ -524,7 +485,7 @@ namespace SalesWinApp
             0});
             this.txtQuantityBuy.Name = "txtQuantityBuy";
             this.txtQuantityBuy.Size = new System.Drawing.Size(120, 22);
-            this.txtQuantityBuy.TabIndex = 9;
+            this.txtQuantityBuy.TabIndex = 4;
             this.txtQuantityBuy.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtQuantityBuy.Value = new decimal(new int[] {
             1,
@@ -532,12 +493,80 @@ namespace SalesWinApp
             0,
             0});
             // 
+            // txtQuantityInStock
+            // 
+            this.txtQuantityInStock.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txtQuantityInStock.Enabled = false;
+            this.txtQuantityInStock.Location = new System.Drawing.Point(449, 192);
+            this.txtQuantityInStock.Name = "txtQuantityInStock";
+            this.txtQuantityInStock.Size = new System.Drawing.Size(120, 22);
+            this.txtQuantityInStock.TabIndex = 100;
+            this.txtQuantityInStock.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(876, 286);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(33, 15);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "VND";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(876, 368);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(33, 15);
+            this.label2.TabIndex = 9;
+            this.label2.Text = "VND";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(875, 410);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(33, 15);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "VND";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(875, 456);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(33, 15);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "VND";
+            // 
+            // btnCheck
+            // 
+            this.btnCheck.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCheck.BackColor = System.Drawing.Color.LavenderBlush;
+            this.btnCheck.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCheck.Location = new System.Drawing.Point(650, 503);
+            this.btnCheck.Name = "btnCheck";
+            this.btnCheck.Size = new System.Drawing.Size(88, 46);
+            this.btnCheck.TabIndex = 8;
+            this.btnCheck.Text = "CHECK";
+            this.btnCheck.UseVisualStyleBackColor = false;
+            this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
+            // 
             // frmCreateOrders
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 561);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.txtQuantityBuy);
+            this.Controls.Add(this.btnCheck);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.txtDate);
@@ -549,35 +578,35 @@ namespace SalesWinApp
             this.Controls.Add(this.lbEmail);
             this.Controls.Add(this.lbCompanyName);
             this.Controls.Add(this.lbCateID);
-            this.Controls.Add(this.label20);
-            this.Controls.Add(this.label19);
-            this.Controls.Add(this.label18);
-            this.Controls.Add(this.label17);
-            this.Controls.Add(this.label16);
+            this.Controls.Add(this.lbReturnAmount);
+            this.Controls.Add(this.lbPaidAmount);
+            this.Controls.Add(this.lbGrandTotal);
+            this.Controls.Add(this.lbDiscount);
+            this.Controls.Add(this.lbSubTotal);
             this.Controls.Add(this.lbQuantityBuy);
             this.Controls.Add(this.lbUnitPrice);
             this.Controls.Add(this.lbQuantityInStock);
             this.Controls.Add(this.lbWeight);
             this.Controls.Add(this.lbProName);
             this.Controls.Add(this.lbProID);
-            this.Controls.Add(this.textBox14);
+            this.Controls.Add(this.txtReturnAmount);
             this.Controls.Add(this.lbMemberID);
-            this.Controls.Add(this.textBox13);
+            this.Controls.Add(this.txtPaidAmount);
             this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.textBox12);
+            this.Controls.Add(this.txtGrandTotal);
             this.Controls.Add(this.txtCompanyName);
-            this.Controls.Add(this.textBox11);
+            this.Controls.Add(this.txtDiscount);
             this.Controls.Add(this.txtCateID);
-            this.Controls.Add(this.textBox10);
-            this.Controls.Add(this.txtUnitPrice);
+            this.Controls.Add(this.txtSubTotal);
             this.Controls.Add(this.txtQuantityInStock);
+            this.Controls.Add(this.txtUnitPrice);
             this.Controls.Add(this.txtWeight);
             this.Controls.Add(this.txtProName);
             this.Controls.Add(this.txtProID);
             this.Controls.Add(this.txtMemberID);
-            this.Controls.Add(this.label15);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lbCalculation);
+            this.Controls.Add(this.lbProductDetails);
+            this.Controls.Add(this.lbCustomerInformation);
             this.Controls.Add(this.dgvProductList);
             this.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.MinimumSize = new System.Drawing.Size(975, 600);
@@ -585,6 +614,7 @@ namespace SalesWinApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Orders";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmCreateOrders_FormClosing);
+            this.Load += new System.EventHandler(this.frmCreateOrders_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvProductList)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtQuantityBuy)).EndInit();
             this.ResumeLayout(false);
@@ -595,7 +625,7 @@ namespace SalesWinApp
         #endregion
 
         private System.Windows.Forms.DataGridView dgvProductList;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbCustomerInformation;
         private System.Windows.Forms.TextBox txtMemberID;
         private System.Windows.Forms.Label lbMemberID;
         private System.Windows.Forms.TextBox txtCompanyName;
@@ -608,7 +638,7 @@ namespace SalesWinApp
         private System.Windows.Forms.ComboBox cboCountry;
         private System.Windows.Forms.DateTimePicker txtDate;
         private System.Windows.Forms.Label lbOrderDate;
-        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lbProductDetails;
         private System.Windows.Forms.TextBox txtProID;
         private System.Windows.Forms.Label lbProID;
         private System.Windows.Forms.TextBox txtCateID;
@@ -622,24 +652,24 @@ namespace SalesWinApp
         private System.Windows.Forms.Label lbQuantityBuy;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox textBox10;
-        private System.Windows.Forms.Label label16;
-        private System.Windows.Forms.TextBox textBox11;
-        private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox textBox12;
-        private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBox13;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.TextBox textBox14;
-        private System.Windows.Forms.Label label20;
-        private System.Windows.Forms.TextBox txtQuantityInStock;
+        private System.Windows.Forms.Label lbCalculation;
+        private System.Windows.Forms.TextBox txtSubTotal;
+        private System.Windows.Forms.Label lbSubTotal;
+        private System.Windows.Forms.TextBox txtDiscount;
+        private System.Windows.Forms.Label lbDiscount;
+        private System.Windows.Forms.TextBox txtGrandTotal;
+        private System.Windows.Forms.Label lbGrandTotal;
+        private System.Windows.Forms.TextBox txtPaidAmount;
+        private System.Windows.Forms.Label lbPaidAmount;
+        private System.Windows.Forms.TextBox txtReturnAmount;
+        private System.Windows.Forms.Label lbReturnAmount;
         private System.Windows.Forms.Label lbQuantityInStock;
         private System.Windows.Forms.NumericUpDown txtQuantityBuy;
+        private System.Windows.Forms.TextBox txtQuantityInStock;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnCheck;
     }
 }

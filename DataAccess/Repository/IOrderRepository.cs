@@ -11,9 +11,11 @@ namespace DataAccess.Repository
     {
         public IEnumerable<OrderObject> GetOrders();
         public OrderObject GetOrderByID(int id);
-        public void InsertOrder(OrderObject order);
+        public void InsertOrder(int orderid, int memberid, decimal freight);
         public void DeleteOrder(int id);
         public void UpdateOrder(OrderObject order);
-            
+        public int GetCountingOrders();
+
+
     }
 }

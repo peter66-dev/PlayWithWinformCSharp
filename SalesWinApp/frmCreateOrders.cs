@@ -16,12 +16,35 @@ namespace SalesWinApp
     {
         MemberRepository memRepository = new MemberRepository();
         ProductRepository proRepository = new ProductRepository();
-        BindingSource source = new BindingSource();
-        IEnumerable<MemberObject> members = null;
-        IEnumerable<ProductObject> products = null;
+        OrderRepository orderRepository = new OrderRepository();
+        OrderDetailRepository orderDetailRepository = new OrderDetailRepository();
+        List<ProductObject> cart = new List<ProductObject>();
         public frmCreateOrders()
         {
             InitializeComponent();
+        }
+        private void frmCreateOrders_Load(object sender, EventArgs e)
+        {
+            txtEmail.Focus();
+            btnCheck.Enabled = false;
+            btnSave.Enabled = false;
+        }
+
+        private void AddToCart(ProductObject pro)
+        {
+            bool checkExist = false;
+            foreach (var p in cart)
+            {
+                if (p.ProductID == pro.ProductID)
+                {
+                    p.UnitsInStock += pro.UnitsInStock;
+                    checkExist = true;
+                }
+            }
+            if (!checkExist)
+            {
+                cart.Add(pro);
+            }
         }
 
         private void txtEmail_TextChanged(object sender, EventArgs e)
@@ -46,7 +69,6 @@ namespace SalesWinApp
                 ClearCustomerInfo();
             }
         }
-
         private void ClearCustomerInfo()
         {
             txtMemberID.Clear();
@@ -97,7 +119,7 @@ namespace SalesWinApp
             txtQuantityInStock.Clear();
         }
 
-        private bool CheckForm()
+        private bool CheckFormAdd()
         {
             bool check = true;
             if (txtCompanyName.Text.Trim().Length == 0)
@@ -105,7 +127,8 @@ namespace SalesWinApp
                 txtEmail.Focus();
                 check = false;
                 MessageBox.Show("Email is not correct!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }else if (txtProName.Text.Trim().Length == 0)
+            }
+            else if (txtProName.Text.Trim().Length == 0)
             {
                 txtProName.Focus();
                 check = false;
@@ -114,20 +137,123 @@ namespace SalesWinApp
             return check;
         }
 
-        private void btnAdd_Click(object sender, EventArgs e)
+        private bool CheckFormCalculation()
         {
-            if (CheckForm())
+            bool check = true;
+            try
             {
-                txtEmail.Enabled = false; // Khóa email lại và chốt 1 customer này mua thôi
+                if (!(float.TryParse(txtDiscount.Text, out float discount) && (discount > 0 && discount < 1)))
+                {
+                    txtDiscount.Focus();
+                    check = false;
+                    MessageBox.Show("Sorry, discount must be in (0-1) please!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else
+                {
+                    double paidAmount = double.Parse(txtPaidAmount.Text);
+                    double grandTotal = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2);
+                    if (!(paidAmount >= grandTotal))
+                    {
+                        check = false;
+                        txtPaidAmount.Focus();
+                        MessageBox.Show($"Paid Amount: {paidAmount} must be more than Grand Total: {grandTotal}!",
+                        "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            return check;
+        }
 
+        private void LoadProductList()
+        {
+            try
+            {
+                dgvProductList.DataSource = null;
+                dgvProductList.DataSource = this.cart;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error at load Product list!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
-        private void btnSave_Click(object sender, EventArgs e)
+        private double SubTotal()
         {
-
+            double result = 0;
+            foreach (var pro in cart)
+            {
+                result += (double)(pro.UnitPrice * pro.UnitsInStock);
+            }
+            return result;
         }
 
+        private void btnAdd_Click(object sender, EventArgs e)//add trùng vô
+        {
+            if (CheckFormAdd())
+            {
+                txtEmail.Enabled = false; // Khóa email lại và chốt 1 customer này mua thôi
+                if (txtQuantityBuy.Value > int.Parse(txtQuantityInStock.Text))
+                {
+                    MessageBox.Show("Sorry, this product don't have enough for you!", "Information", MessageBoxButtons.OK);
+                }
+                else
+                {
+                    ProductObject pro = new ProductObject(int.Parse(txtProID.Text), int.Parse(txtCateID.Text),
+                      txtProName.Text, decimal.Parse(txtUnitPrice.Text), Decimal.ToInt32(txtQuantityBuy.Value));
+                    AddToCart(pro);
+                    LoadProductList();
+                    txtSubTotal.Text = SubTotal().ToString();
+                    btnCheck.Enabled = true;
+                }
+            }
+        }
+
+        private double GrandTotal(float discount) => SubTotal() * (1 - discount);
+        private void btnCheck_Click(object sender, EventArgs e)// check quantity
+        {
+            if (CheckFormCalculation())
+            {
+                txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2).ToString();
+                btnAdd.Enabled = false;
+                btnAdd.BackColor = Color.DarkOliveGreen;
+                double returnAmount = double.Parse(txtPaidAmount.Text) - double.Parse(txtGrandTotal.Text);
+                txtReturnAmount.Text = returnAmount.ToString();
+
+
+                //Check quantity in stock!
+
+
+                btnSave.Enabled = true;
+
+            }
+        }
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            //add new order
+            int memID = int.Parse(txtMemberID.Text);
+            int countingOrders = orderRepository.GetCountingOrders();
+            decimal grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text), 2);
+            orderRepository.InsertOrder(++countingOrders, memID, grandTotal);
+
+            //add new order details
+            foreach (var pro in cart)
+            {
+                OrderDetailObject or = new OrderDetailObject()
+                {
+                    OrderID = countingOrders,
+                    ProductID = pro.ProductID,
+                    UnitPrice = Math.Round(pro.UnitPrice, 2),
+                    Quantity = pro.UnitsInStock, // Chỗ này UnitsInStock là số lượng mua của customer
+                    Discount = Math.Round(float.Parse(txtDiscount.Text), 5),
+                    Total = Math.Round((double)pro.UnitPrice * pro.UnitsInStock, 2)
+                };
+                orderDetailRepository.InsertOrderDetail(or);
+            }
+
+        }
         private void frmCreateOrders_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Are you sure to quit?", "Confirm information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)

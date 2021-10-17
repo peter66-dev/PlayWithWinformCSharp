@@ -77,16 +77,14 @@ namespace DataAccess
             return list;
         }
 
-        public void InsertOrder(OrderObject order)
+        public void InsertOrder(int orderid, int memberid, decimal freight)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("INSERT INTO tblOrder(MemberID, OrderDate, RequiredDate, ShippedDate, Freight) " +
-                "values(@MemberID, @OrderDate, @RequiredDate, @ShippedDate, @Freight)", connection);
-            command.Parameters.AddWithValue("@MemberID", order.MemberID);
-            command.Parameters.AddWithValue("@OrderDate", order.OrderDate);
-            command.Parameters.AddWithValue("@RequiredDate", order.RequiredDate);
-            command.Parameters.AddWithValue("@ShippedDate", order.ShippedDate);
-            command.Parameters.AddWithValue("@Freight", order.Freight);
+            command = new SqlCommand("INSERT INTO tblOrder(OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight) " +
+                "values(@OrderID, @MemberID, getdate(), getdate(), getdate(), @Freight)", connection);
+            command.Parameters.AddWithValue("@MemberID", memberid);
+            command.Parameters.AddWithValue("@OrderID", orderid);
+            command.Parameters.AddWithValue("@Freight", freight);
             try
             {
                 connection.Open();
@@ -181,6 +179,31 @@ namespace DataAccess
                 connection.Close();
             }
             return order;
+        }
+
+        public int GetCountingOrders()
+        {
+            int count = 0;
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select count(OrderID) as Total from tblOrder", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.Read())
+                {
+                    count = reader.GetInt32("Total");
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return count;
         }
 
 
