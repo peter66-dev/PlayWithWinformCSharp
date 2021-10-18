@@ -17,7 +17,7 @@ namespace SalesWinApp
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmCreateOrders());
+            Application.Run(new frmLogin());
         }
     }
 }

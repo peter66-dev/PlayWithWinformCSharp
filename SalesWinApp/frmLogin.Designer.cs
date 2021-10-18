@@ -29,10 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.lbShowPsw = new System.Windows.Forms.Label();
+            this.lbCreate = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
             this.txtPassword = new System.Windows.Forms.TextBox();
+            this.lbShowPsw = new System.Windows.Forms.Label();
             this.lbPassword = new System.Windows.Forms.Label();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lbEmail = new System.Windows.Forms.Label();
@@ -42,40 +43,42 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel1.Controls.Add(this.lbShowPsw);
+            this.panel1.Controls.Add(this.lbCreate);
             this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.btnLogin);
             this.panel1.Controls.Add(this.txtPassword);
+            this.panel1.Controls.Add(this.lbShowPsw);
             this.panel1.Controls.Add(this.lbPassword);
             this.panel1.Controls.Add(this.txtEmail);
             this.panel1.Controls.Add(this.lbEmail);
             this.panel1.Controls.Add(this.lbTitle);
             this.panel1.Cursor = System.Windows.Forms.Cursors.Default;
-            this.panel1.Location = new System.Drawing.Point(0, 37);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(920, 450);
+            this.panel1.Size = new System.Drawing.Size(884, 411);
             this.panel1.TabIndex = 0;
             // 
-            // lbShowPsw
+            // lbCreate
             // 
-            this.lbShowPsw.AutoSize = true;
-            this.lbShowPsw.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lbShowPsw.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbShowPsw.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbShowPsw.Location = new System.Drawing.Point(713, 222);
-            this.lbShowPsw.Name = "lbShowPsw";
-            this.lbShowPsw.Size = new System.Drawing.Size(44, 19);
-            this.lbShowPsw.TabIndex = 3;
-            this.lbShowPsw.Text = "Show";
-            this.lbShowPsw.Click += new System.EventHandler(this.lbShowPsw_Click);
+            this.lbCreate.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbCreate.AutoSize = true;
+            this.lbCreate.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbCreate.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.lbCreate.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lbCreate.Location = new System.Drawing.Point(365, 262);
+            this.lbCreate.Name = "lbCreate";
+            this.lbCreate.Size = new System.Drawing.Size(161, 21);
+            this.lbCreate.TabIndex = 6;
+            this.lbCreate.Text = "Create new account";
+            this.lbCreate.Click += new System.EventHandler(this.lbCreate_Click);
             // 
             // btnReset
             // 
             this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReset.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnReset.Location = new System.Drawing.Point(496, 365);
+            this.btnReset.Location = new System.Drawing.Point(478, 326);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 32);
             this.btnReset.TabIndex = 5;
@@ -88,7 +91,7 @@
             this.btnLogin.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnLogin.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnLogin.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.btnLogin.Location = new System.Drawing.Point(355, 365);
+            this.btnLogin.Location = new System.Drawing.Point(337, 326);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(75, 32);
             this.btnLogin.TabIndex = 4;
@@ -98,17 +101,31 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtPassword.Location = new System.Drawing.Point(334, 217);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(353, 29);
+            this.txtPassword.Size = new System.Drawing.Size(317, 29);
             this.txtPassword.TabIndex = 2;
+            // 
+            // lbShowPsw
+            // 
+            this.lbShowPsw.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbShowPsw.AutoSize = true;
+            this.lbShowPsw.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lbShowPsw.Font = new System.Drawing.Font("Times New Roman", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.lbShowPsw.ForeColor = System.Drawing.Color.DarkBlue;
+            this.lbShowPsw.Location = new System.Drawing.Point(680, 224);
+            this.lbShowPsw.Name = "lbShowPsw";
+            this.lbShowPsw.Size = new System.Drawing.Size(37, 15);
+            this.lbShowPsw.TabIndex = 0;
+            this.lbShowPsw.Text = "Show";
+            this.lbShowPsw.Click += new System.EventHandler(this.lbShowPsw_Click);
             // 
             // lbPassword
             // 
-            this.lbPassword.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lbPassword.ForeColor = System.Drawing.Color.DarkBlue;
@@ -120,16 +137,16 @@
             // 
             // txtEmail
             // 
-            this.txtEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtEmail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtEmail.Location = new System.Drawing.Point(334, 160);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(353, 29);
+            this.txtEmail.Size = new System.Drawing.Size(317, 29);
             this.txtEmail.TabIndex = 1;
             // 
             // lbEmail
             // 
-            this.lbEmail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
             this.lbEmail.ForeColor = System.Drawing.Color.DarkBlue;
@@ -145,7 +162,7 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbTitle.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbTitle.Location = new System.Drawing.Point(383, 48);
+            this.lbTitle.Location = new System.Drawing.Point(365, 48);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(188, 42);
             this.lbTitle.TabIndex = 0;
@@ -156,7 +173,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(920, 524);
+            this.ClientSize = new System.Drawing.Size(884, 411);
             this.Controls.Add(this.panel1);
             this.MinimumSize = new System.Drawing.Size(900, 450);
             this.Name = "frmLogin";
@@ -179,6 +196,7 @@
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnLogin;
+        private System.Windows.Forms.Label lbCreate;
         private System.Windows.Forms.Label lbShowPsw;
     }
 }

@@ -17,6 +17,7 @@ namespace SalesWinApp
 
         public IMemberRepository MemberRepository { get; set; }
         public bool InsertOrUpdate { get; set; }
+        public bool ViewOrderHistory { get; set; } // TRUE > Cho phép hiển thị nút View orders history
         public MemberObject MemberInfo { get; set; }
         public frmMemberDetails()
         {
@@ -27,6 +28,7 @@ namespace SalesWinApp
             cboCity.SelectedIndex = 0;
             cboCountry.SelectedIndex = 0;
             txtID.Enabled = !InsertOrUpdate;
+            btnViewHistory.Visible = ViewOrderHistory;
             if (InsertOrUpdate)//UPDATE => KHÔNG ĐƯỢC UPDATE ROLE - ROLE CHỈ ĐƯỢC TẠO
             {
                 txtID.Text = MemberInfo.MemberID.ToString();
@@ -140,8 +142,8 @@ namespace SalesWinApp
                             Country = cboCountry.Text,
                         };
                         MemberRepository.UpdateMember(mem);
-                        MessageBox.Show("Updating a new member successfully!\nClick Load button to see the new information",
-                                                            "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Updating a new member successfully!\n" +
+                            "Click Load button to see the new information", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
                     else // false > insert
@@ -155,8 +157,8 @@ namespace SalesWinApp
                             Country = cboCountry.Text,
                         };
                         MemberRepository.InsertMember(mem);
-                        MessageBox.Show("Adding a new member successfully!\nClick Load button to see the new information",
-                                                            "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Adding a new member successfully!\n" +
+                            "Click Load button to see the new information", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         Close();
                     }
                 }
@@ -209,6 +211,24 @@ namespace SalesWinApp
                     lbShowConfirmPassword.Text = "Show";
                 }
             }
+        }
+
+        private void btnViewHistory_Click(object sender, EventArgs e)
+        {
+            MemberObject mem = new MemberObject()
+            {
+                MemberID = int.Parse(txtID.Text),
+                CompanyName = txtCompanyName.Text,
+                Email = txtCompanyName.Text,
+                Password = txtCompanyName.Text,
+                City = txtCompanyName.Text,
+                Country = txtCompanyName.Text,
+            };
+            frmOrdersHistory frm = new frmOrdersHistory()
+            {
+                MemberInfo = mem
+            };
+            frm.Show();
         }
     }
 }

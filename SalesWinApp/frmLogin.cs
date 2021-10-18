@@ -124,12 +124,13 @@ namespace SalesWinApp
                             {
                                 Text = "Update a member",
                                 InsertOrUpdate = true,
+                                ViewOrderHistory = true, // Member được coi lịch sử
                                 MemberInfo = memberLogin,
                                 MemberRepository = memRepository
                             };
                             if (frmMemberDetails.ShowDialog() == DialogResult.OK)
                             {
-                                MessageBox.Show("Updating successfully!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                MessageBox.Show("Updating successfully!", "Message", MessageBoxButtons.OK);
                             }
                         }
                     }
@@ -144,6 +145,20 @@ namespace SalesWinApp
         {
             txtEmail.Clear();
             txtPassword.Clear();
+        }
+
+        private void lbCreate_Click(object sender, EventArgs e)
+        {
+            var frmMemberDetails = new frmMemberDetails
+            {
+                Text = "Update a member",
+                InsertOrUpdate = false,
+                MemberRepository = memRepository
+            };
+            if (frmMemberDetails.ShowDialog() == DialogResult.OK)
+            {
+                MessageBox.Show("Creating a new account successfully!", "Message", MessageBoxButtons.OK);
+            }
         }
     }
 }

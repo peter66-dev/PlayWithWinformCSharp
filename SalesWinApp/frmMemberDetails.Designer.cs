@@ -46,6 +46,7 @@
             this.cboCountry = new System.Windows.Forms.ComboBox();
             this.lbTitle = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnViewHistory = new System.Windows.Forms.Button();
             this.lbShowConfirmPassword = new System.Windows.Forms.Label();
             this.lbShowPassword = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
@@ -57,7 +58,7 @@
             this.lbID.AutoSize = true;
             this.lbID.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbID.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbID.Location = new System.Drawing.Point(127, 130);
+            this.lbID.Location = new System.Drawing.Point(103, 119);
             this.lbID.Name = "lbID";
             this.lbID.Size = new System.Drawing.Size(105, 22);
             this.lbID.TabIndex = 1;
@@ -67,7 +68,7 @@
             // 
             this.txtID.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtID.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtID.Location = new System.Drawing.Point(322, 128);
+            this.txtID.Location = new System.Drawing.Point(298, 117);
             this.txtID.Name = "txtID";
             this.txtID.Size = new System.Drawing.Size(144, 29);
             this.txtID.TabIndex = 1;
@@ -76,7 +77,7 @@
             // 
             this.txtCompanyName.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtCompanyName.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtCompanyName.Location = new System.Drawing.Point(322, 173);
+            this.txtCompanyName.Location = new System.Drawing.Point(298, 162);
             this.txtCompanyName.Name = "txtCompanyName";
             this.txtCompanyName.Size = new System.Drawing.Size(355, 29);
             this.txtCompanyName.TabIndex = 2;
@@ -87,7 +88,7 @@
             this.lbCompanyName.AutoSize = true;
             this.lbCompanyName.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCompanyName.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbCompanyName.Location = new System.Drawing.Point(127, 175);
+            this.lbCompanyName.Location = new System.Drawing.Point(103, 164);
             this.lbCompanyName.Name = "lbCompanyName";
             this.lbCompanyName.Size = new System.Drawing.Size(141, 22);
             this.lbCompanyName.TabIndex = 3;
@@ -99,7 +100,7 @@
             this.lbEmail.AutoSize = true;
             this.lbEmail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbEmail.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbEmail.Location = new System.Drawing.Point(127, 220);
+            this.lbEmail.Location = new System.Drawing.Point(103, 209);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(58, 22);
             this.lbEmail.TabIndex = 3;
@@ -109,7 +110,7 @@
             // 
             this.txtEmail.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtEmail.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtEmail.Location = new System.Drawing.Point(322, 218);
+            this.txtEmail.Location = new System.Drawing.Point(298, 207);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(355, 29);
             this.txtEmail.TabIndex = 3;
@@ -120,7 +121,7 @@
             this.lbPassword.AutoSize = true;
             this.lbPassword.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbPassword.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbPassword.Location = new System.Drawing.Point(127, 263);
+            this.lbPassword.Location = new System.Drawing.Point(103, 252);
             this.lbPassword.Name = "lbPassword";
             this.lbPassword.Size = new System.Drawing.Size(90, 22);
             this.lbPassword.TabIndex = 3;
@@ -130,7 +131,7 @@
             // 
             this.txtPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPassword.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtPassword.Location = new System.Drawing.Point(322, 261);
+            this.txtPassword.Location = new System.Drawing.Point(298, 250);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(355, 29);
@@ -142,7 +143,7 @@
             this.lbCity.AutoSize = true;
             this.lbCity.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCity.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbCity.Location = new System.Drawing.Point(127, 366);
+            this.lbCity.Location = new System.Drawing.Point(103, 355);
             this.lbCity.Name = "lbCity";
             this.lbCity.Size = new System.Drawing.Size(44, 22);
             this.lbCity.TabIndex = 3;
@@ -154,7 +155,7 @@
             this.lbCountry.AutoSize = true;
             this.lbCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCountry.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbCountry.Location = new System.Drawing.Point(127, 412);
+            this.lbCountry.Location = new System.Drawing.Point(103, 401);
             this.lbCountry.Name = "lbCountry";
             this.lbCountry.Size = new System.Drawing.Size(77, 22);
             this.lbCountry.TabIndex = 3;
@@ -165,7 +166,7 @@
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(306, 493);
+            this.btnSave.Location = new System.Drawing.Point(282, 482);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(1);
             this.btnSave.Size = new System.Drawing.Size(85, 37);
@@ -179,7 +180,7 @@
             this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReset.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReset.Location = new System.Drawing.Point(426, 493);
+            this.btnReset.Location = new System.Drawing.Point(402, 482);
             this.btnReset.Name = "btnReset";
             this.btnReset.Padding = new System.Windows.Forms.Padding(1);
             this.btnReset.Size = new System.Drawing.Size(85, 37);
@@ -194,7 +195,7 @@
             this.lbConfirmPassword.AutoSize = true;
             this.lbConfirmPassword.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbConfirmPassword.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbConfirmPassword.Location = new System.Drawing.Point(127, 314);
+            this.lbConfirmPassword.Location = new System.Drawing.Point(103, 303);
             this.lbConfirmPassword.Name = "lbConfirmPassword";
             this.lbConfirmPassword.Size = new System.Drawing.Size(163, 22);
             this.lbConfirmPassword.TabIndex = 3;
@@ -204,7 +205,7 @@
             // 
             this.txtConfirmPassword.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtConfirmPassword.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtConfirmPassword.Location = new System.Drawing.Point(322, 312);
+            this.txtConfirmPassword.Location = new System.Drawing.Point(298, 301);
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(355, 29);
@@ -227,7 +228,7 @@
             "Manila",
             "Begawan",
             "Dili"});
-            this.cboCity.Location = new System.Drawing.Point(322, 364);
+            this.cboCity.Location = new System.Drawing.Point(298, 353);
             this.cboCity.Name = "cboCity";
             this.cboCity.Size = new System.Drawing.Size(144, 29);
             this.cboCity.TabIndex = 6;
@@ -249,7 +250,7 @@
             "Brunei",
             "Philippines",
             "DongTimor"});
-            this.cboCountry.Location = new System.Drawing.Point(322, 410);
+            this.cboCountry.Location = new System.Drawing.Point(298, 399);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(144, 29);
             this.cboCountry.TabIndex = 7;
@@ -260,7 +261,7 @@
             this.lbTitle.AutoSize = true;
             this.lbTitle.Font = new System.Drawing.Font("Times New Roman", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbTitle.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbTitle.Location = new System.Drawing.Point(294, 48);
+            this.lbTitle.Location = new System.Drawing.Point(270, 37);
             this.lbTitle.Name = "lbTitle";
             this.lbTitle.Size = new System.Drawing.Size(262, 42);
             this.lbTitle.TabIndex = 9;
@@ -269,6 +270,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnViewHistory);
             this.panel1.Controls.Add(this.lbShowConfirmPassword);
             this.panel1.Controls.Add(this.lbShowPassword);
             this.panel1.Controls.Add(this.btnSave);
@@ -292,8 +294,21 @@
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(797, 708);
+            this.panel1.Size = new System.Drawing.Size(749, 687);
             this.panel1.TabIndex = 20;
+            // 
+            // btnViewHistory
+            // 
+            this.btnViewHistory.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnViewHistory.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnViewHistory.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnViewHistory.Location = new System.Drawing.Point(12, 12);
+            this.btnViewHistory.Name = "btnViewHistory";
+            this.btnViewHistory.Size = new System.Drawing.Size(190, 43);
+            this.btnViewHistory.TabIndex = 10;
+            this.btnViewHistory.Text = "View orders history";
+            this.btnViewHistory.UseVisualStyleBackColor = false;
+            this.btnViewHistory.Click += new System.EventHandler(this.btnViewHistory_Click);
             // 
             // lbShowConfirmPassword
             // 
@@ -301,7 +316,7 @@
             this.lbShowConfirmPassword.AutoSize = true;
             this.lbShowConfirmPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbShowConfirmPassword.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbShowConfirmPassword.Location = new System.Drawing.Point(698, 319);
+            this.lbShowConfirmPassword.Location = new System.Drawing.Point(674, 308);
             this.lbShowConfirmPassword.Name = "lbShowConfirmPassword";
             this.lbShowConfirmPassword.Size = new System.Drawing.Size(38, 15);
             this.lbShowConfirmPassword.TabIndex = 21;
@@ -314,7 +329,7 @@
             this.lbShowPassword.AutoSize = true;
             this.lbShowPassword.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lbShowPassword.ForeColor = System.Drawing.SystemColors.Highlight;
-            this.lbShowPassword.Location = new System.Drawing.Point(698, 268);
+            this.lbShowPassword.Location = new System.Drawing.Point(674, 257);
             this.lbShowPassword.Name = "lbShowPassword";
             this.lbShowPassword.Size = new System.Drawing.Size(38, 15);
             this.lbShowPassword.TabIndex = 21;
@@ -326,10 +341,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(797, 708);
+            this.ClientSize = new System.Drawing.Size(749, 687);
             this.Controls.Add(this.panel1);
-            this.MaximumSize = new System.Drawing.Size(10000, 3300);
-            this.MinimumSize = new System.Drawing.Size(700, 726);
+            this.MinimumSize = new System.Drawing.Size(765, 726);
             this.Name = "frmMemberDetails";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Member details";
@@ -361,5 +375,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbShowConfirmPassword;
         private System.Windows.Forms.Label lbShowPassword;
+        private System.Windows.Forms.Button btnViewHistory;
     }
 }
