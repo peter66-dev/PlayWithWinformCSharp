@@ -255,7 +255,7 @@ namespace DataAccess
             List<string> result = new List<string>();
             foreach (var pro in cart)
             {
-                int quantity = GetQuantityByProID(pro.ProductID);
+                int quantity = GetQuantityByProID(pro.ProductID);// Số lượng trong kho
                 if (quantity < pro.UnitsInStock)
                 {
                     result.Add(pro.ProductName);
@@ -288,6 +288,53 @@ namespace DataAccess
                 connection.Close();
             }
             return quantity;
+        }
+
+        public void SubQuantityProduct(List<ProductObject> cart)
+        {
+            foreach (var p in cart)
+            {
+                int id = p.ProductID;
+                int quantityBuy = p.UnitsInStock;
+                connection = new SqlConnection(GetConnectionString());
+                command = new SqlCommand("update tblProduct set UnitsInStock = UnitsInStock - @QuantityBuy where ProductID = @ProductID", connection);
+                command.Parameters.AddWithValue("@QuantityBuy", quantityBuy);
+                command.Parameters.AddWithValue("@ProductID", id);
+                try
+                {
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception(ex.Message);
+                }
+                finally
+                {
+                    connection.Close();
+                }
+            }
+        }
+
+        void SetNewQuantityProduct(int id, int quantityBuy)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("update tblProduct set UnitsInStock = UnitsInStock - @QuantityBuy where ProductID = @ProductID", connection);
+            command.Parameters.AddWithValue("@QuantityBuy", quantityBuy);
+            command.Parameters.AddWithValue("@ProductID", id);
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

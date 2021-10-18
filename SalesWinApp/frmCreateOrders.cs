@@ -235,7 +235,7 @@ namespace SalesWinApp
             {
                 txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2).ToString();
                 btnAdd.Enabled = false;
-                btnAdd.BackColor = Color.DarkOliveGreen;
+                btnAdd.BackColor = Color.LightGray;
                 double returnAmount = double.Parse(txtPaidAmount.Text) - double.Parse(txtGrandTotal.Text) - (double)decimal.Parse(txtFreight.Text);
                 txtReturnAmount.Text = Math.Round(returnAmount, 2).ToString();
 
@@ -245,6 +245,9 @@ namespace SalesWinApp
                 if (checkQuantityProduct.Count == 0) // Check đủ -> ko add thêm , tiến hành add order | order detail -> btnSave_Click
                 {
                     btnSave.Enabled = true;
+                    btnSave.BackColor = Color.DeepSkyBlue;
+                    MessageBox.Show($"Quantity in stock is enough for this bill\n" +
+                        $"Please check bill carefully before save!", "Message", MessageBoxButtons.OK);
                 }
                 else
                 {
@@ -282,23 +285,22 @@ namespace SalesWinApp
                         Discount = Math.Round(float.Parse(txtDiscount.Text), 5),
                     };
                     orderDetailRepository.InsertOrderDetail(or);
-                    List<string> checkQuantityProduct = proRepository.CheckQuantity(cart);
-                    if (checkQuantityProduct.Count == 0) // Check đủ -> ko add thêm , tiến hành add order | order detail -> btnSave_Click
-                    {
-                        // Thêm hàm trừ số lượng chỗ này
 
-                    }
-                    check = true;
-                }
-
-                if (check)
-                {
-                    MessageBox.Show("Creating order successfully!\nWait a moment, your product is on its way!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Close();
                 }
 
                 //Sub quantity in stock 
-
+                List<string> checkQuantityProduct = proRepository.CheckQuantity(cart);
+                if (checkQuantityProduct.Count == 0)
+                {
+                    check = true;
+                    proRepository.SubQuantityProduct(cart);
+                }
+                if (check)
+                {
+                    MessageBox.Show("Creating order successfully!\n" +
+                        "Wait a moment, your product is on its way!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
             }
         }
     }

@@ -227,7 +227,7 @@ namespace SalesWinApp
             // btnSave
             // 
             this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSave.BackColor = System.Drawing.Color.DarkTurquoise;
+            this.btnSave.BackColor = System.Drawing.Color.DarkGray;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Location = new System.Drawing.Point(769, 503);
             this.btnSave.Name = "btnSave";
@@ -391,9 +391,9 @@ namespace SalesWinApp
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(899, 278);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(33, 15);
+            this.label1.Size = new System.Drawing.Size(41, 15);
             this.label1.TabIndex = 333;
-            this.label1.Text = "VND";
+            this.label1.Text = "(VND)";
             // 
             // label2
             // 
@@ -401,9 +401,9 @@ namespace SalesWinApp
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(899, 354);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(33, 15);
+            this.label2.Size = new System.Drawing.Size(41, 15);
             this.label2.TabIndex = 933;
-            this.label2.Text = "VND";
+            this.label2.Text = "(VND)";
             // 
             // label3
             // 
@@ -411,9 +411,9 @@ namespace SalesWinApp
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(899, 428);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(33, 15);
+            this.label3.Size = new System.Drawing.Size(41, 15);
             this.label3.TabIndex = 933;
-            this.label3.Text = "VND";
+            this.label3.Text = "(VND)";
             // 
             // label4
             // 
@@ -421,9 +421,9 @@ namespace SalesWinApp
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(899, 463);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(33, 15);
+            this.label4.Size = new System.Drawing.Size(41, 15);
             this.label4.TabIndex = 933;
-            this.label4.Text = "VND";
+            this.label4.Text = "(VND)";
             // 
             // btnCheck
             // 
@@ -463,9 +463,9 @@ namespace SalesWinApp
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(899, 391);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(33, 15);
+            this.label6.Size = new System.Drawing.Size(41, 15);
             this.label6.TabIndex = 933;
-            this.label6.Text = "VND";
+            this.label6.Text = "(VND)";
             // 
             // cboCountry
             // 
@@ -526,7 +526,7 @@ namespace SalesWinApp
             // lbEmail
             // 
             this.lbEmail.AutoSize = true;
-            this.lbEmail.Location = new System.Drawing.Point(8, 45);
+            this.lbEmail.Location = new System.Drawing.Point(12, 45);
             this.lbEmail.Name = "lbEmail";
             this.lbEmail.Size = new System.Drawing.Size(35, 15);
             this.lbEmail.TabIndex = 1000;
