@@ -39,13 +39,11 @@ namespace SalesWinApp
                 txtPassword.DataBindings.Clear();
                 cboCity.DataBindings.Clear();
                 cboCountry.DataBindings.Clear();
-                txtRole.DataBindings.Clear();
 
                 txtID.DataBindings.Add("Text", source, "MemberID");
                 txtCompanyName.DataBindings.Add("Text", source, "CompanyName");
                 txtEmail.DataBindings.Add("Text", source, "Email");
                 txtPassword.DataBindings.Add("Text", source, "Password");
-                txtRole.DataBindings.Add("Text", source, "Role");
                 cboCity.DataBindings.Add("Text", source, "City");
                 cboCountry.DataBindings.Add("Text", source, "Country");
 
@@ -88,7 +86,6 @@ namespace SalesWinApp
             txtPassword.Clear();
             cboCity.Text = string.Empty;
             cboCountry.Text = string.Empty;
-            txtRole.Clear();
         }
 
         private MemberObject GetMemberObject()
@@ -104,7 +101,6 @@ namespace SalesWinApp
                     Password = txtPassword.Text,
                     City = cboCity.Text,
                     Country = cboCountry.Text,
-                    Role = txtRole.Text
                 };
             }
             catch (Exception ex)
@@ -161,21 +157,14 @@ namespace SalesWinApp
             {
                 try
                 {
-                    if (mem.Role.Equals("admin", StringComparison.OrdinalIgnoreCase))
+                    source.Position = 0;
+                    memRepository.DeleteMember(mem.MemberID);
+                    members = memRepository.GetMembers();
+                    LoadMemberList(members);
+                    if (memRepository.GetMembers().Count() == 1)
                     {
-                        MessageBox.Show("Sorry, we can't delete member with Admin role!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
-                    {
-                        source.Position = 0;
-                        memRepository.DeleteMember(mem.MemberID);
-                        members = memRepository.GetMembers();
-                        LoadMemberList(members);
-                        if (memRepository.GetMembers().Count() == 1)
-                        {
-                            btnDelete.Enabled = false;
-                            MessageBox.Show("We have only 1 member existing in list, now. Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        }
+                        btnDelete.Enabled = false;
+                        MessageBox.Show("We have only 1 member existing in list, now. Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 catch (Exception ex)

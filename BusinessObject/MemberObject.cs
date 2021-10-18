@@ -10,7 +10,6 @@ namespace BusinessObject
         public string City { get; set; }
         public string Country { get; set; }
         public string Password { get; set; }
-        public string Role { get; set; }
         public MemberObject()
         {
             MemberID = 0;
@@ -19,10 +18,9 @@ namespace BusinessObject
             City = "";
             Country = "";
             Password = "";
-            Role = "";
         }
 
-        public MemberObject(int id, string email, string comName, string city, string country, string psw, string role)
+        public MemberObject(int id, string email, string comName, string city, string country, string psw)
         {
             MemberID = id;
             Email = email;
@@ -30,7 +28,6 @@ namespace BusinessObject
             City = city;
             Country = country;
             Password = psw;
-            Role = role;
         }
     }
 }

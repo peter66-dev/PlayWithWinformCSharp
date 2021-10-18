@@ -26,9 +26,7 @@ namespace SalesWinApp
         {
             cboCity.SelectedIndex = 0;
             cboCountry.SelectedIndex = 0;
-            cboRole.SelectedIndex = 0;
             txtID.Enabled = !InsertOrUpdate;
-            cboRole.Enabled = !InsertOrUpdate;
             if (InsertOrUpdate)//UPDATE => KHÔNG ĐƯỢC UPDATE ROLE - ROLE CHỈ ĐƯỢC TẠO
             {
                 txtID.Text = MemberInfo.MemberID.ToString();
@@ -38,13 +36,11 @@ namespace SalesWinApp
                 txtConfirmPassword.Text = MemberInfo.Password;
                 cboCity.Text = MemberInfo.City;
                 cboCountry.Text = MemberInfo.Country;
-                cboRole.SelectedItem = MemberInfo.Role;
             }
             else
             {
                 txtID.Visible = false;
                 lbID.Visible = false;
-                cboRole.Enabled = false;
             }
         }
 
@@ -85,13 +81,6 @@ namespace SalesWinApp
             {
                 txtPassword.Focus();
                 MessageBox.Show("Sorry, Password and Confirm Password don't match together!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                check = false;
-            }
-            else if (!(cboRole.Text.Equals("admin", StringComparison.OrdinalIgnoreCase)
-                        || cboRole.Text.Equals("user", StringComparison.OrdinalIgnoreCase)))
-            {
-                cboRole.Focus();
-                MessageBox.Show("Sorry, Role must be User or Admin please!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 check = false;
             }
             else if (String.IsNullOrEmpty(cboCity.Text.Trim()) || !(
@@ -149,7 +138,6 @@ namespace SalesWinApp
                             Password = txtPassword.Text,
                             City = cboCity.Text,
                             Country = cboCountry.Text,
-                            Role = cboRole.Text
                         };
                         MemberRepository.UpdateMember(mem);
                         MessageBox.Show("Updating a new member successfully!\nClick Load button to see the new information",
@@ -165,7 +153,6 @@ namespace SalesWinApp
                             Password = txtPassword.Text,
                             City = cboCity.Text,
                             Country = cboCountry.Text,
-                            Role = cboRole.Text
                         };
                         MemberRepository.InsertMember(mem);
                         MessageBox.Show("Adding a new member successfully!\nClick Load button to see the new information",
@@ -188,11 +175,6 @@ namespace SalesWinApp
             txtConfirmPassword.Clear();
             cboCity.SelectedIndex = 0;
             cboCountry.SelectedIndex = 0;
-            if (!InsertOrUpdate) // INSERT 
-            {
-                txtID.Clear();
-                cboRole.SelectedIndex = 0;
-            }
         }
 
         private void lbShowPassword_Click(object sender, EventArgs e)

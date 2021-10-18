@@ -109,26 +109,22 @@ namespace SalesWinApp
                     {
                         frmMembers frm = new frmMembers();
                         frm.Show();
-                        //MessageBox.Show("Tui là admin nè!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {
                         MemberObject memberLogin = new MemberObject();
                         memberLogin = MemberDAO.Instance.GetMemberByEmailPassword(emailLogin, pswLogin);
-                        if (!memberLogin.Role.Equals("User"))
+                        if (memberLogin.MemberID == 0)
                         {
-                            //MessageBox.Show($"Email: {memberLogin.Email}, password: {memberLogin.Password}, role: {memberLogin.Role}");
                             MessageBox.Show("Sai email & password", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                         else
                         {
-                            //MessageBox.Show($"Email: {memberLogin.Email}, password: {memberLogin.Password}, role: {memberLogin.Role}");
-                            //MessageBox.Show("Tui là User nè!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            var frmMemberDetails = new SalesWinApp.frmMemberDetails
+                            var frmMemberDetails = new frmMemberDetails
                             {
                                 Text = "Update a member",
                                 InsertOrUpdate = true,
-                                MemberInfo = MemberDAO.Instance.GetMemberByEmailPassword(emailLogin, pswLogin),
+                                MemberInfo = memberLogin,
                                 MemberRepository = memRepository
                             };
                             if (frmMemberDetails.ShowDialog() == DialogResult.OK)

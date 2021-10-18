@@ -32,13 +32,6 @@ namespace SalesWinApp
         private void InitializeComponent()
         {
             this.dgvMemberList = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -50,9 +43,7 @@ namespace SalesWinApp
             this.cboCity = new System.Windows.Forms.ComboBox();
             this.lbCity = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
-            this.txtRole = new System.Windows.Forms.TextBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
-            this.lbRole = new System.Windows.Forms.Label();
             this.lbPassword = new System.Windows.Forms.Label();
             this.lbEmail = new System.Windows.Forms.Label();
             this.txtCompanyName = new System.Windows.Forms.TextBox();
@@ -65,6 +56,12 @@ namespace SalesWinApp
             this.lbFStore = new System.Windows.Forms.Label();
             this.btnDescSort = new System.Windows.Forms.Button();
             this.txtEmailSearch = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMemberList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -78,66 +75,16 @@ namespace SalesWinApp
             this.dgvMemberList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMemberList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
-            this.Column2,
             this.Column3,
-            this.Column4,
-            this.Column7,
+            this.Column2,
             this.Column5,
-            this.Column6});
+            this.Column6,
+            this.Column4});
             this.dgvMemberList.Location = new System.Drawing.Point(15, 372);
             this.dgvMemberList.Name = "dgvMemberList";
             this.dgvMemberList.RowTemplate.Height = 25;
             this.dgvMemberList.Size = new System.Drawing.Size(1157, 325);
             this.dgvMemberList.TabIndex = 1;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "MemberID";
-            this.Column1.HeaderText = "Member ID";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "CompanyName";
-            this.Column2.HeaderText = "Company Name";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "Email";
-            this.Column3.HeaderText = "Email";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "Password";
-            this.Column4.HeaderText = "Password";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "Role";
-            this.Column7.HeaderText = "Role";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "City";
-            this.Column5.HeaderText = "City";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "Country";
-            this.Column6.HeaderText = "Country";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
             // 
             // btnLoad
             // 
@@ -208,9 +155,7 @@ namespace SalesWinApp
             this.panel1.Controls.Add(this.cboCity);
             this.panel1.Controls.Add(this.lbCity);
             this.panel1.Controls.Add(this.txtPassword);
-            this.panel1.Controls.Add(this.txtRole);
             this.panel1.Controls.Add(this.txtEmail);
-            this.panel1.Controls.Add(this.lbRole);
             this.panel1.Controls.Add(this.lbPassword);
             this.panel1.Controls.Add(this.lbEmail);
             this.panel1.Controls.Add(this.txtCompanyName);
@@ -220,7 +165,7 @@ namespace SalesWinApp
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(15, 69);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(809, 212);
+            this.panel1.Size = new System.Drawing.Size(809, 185);
             this.panel1.TabIndex = 2;
             // 
             // lbCountry
@@ -296,16 +241,6 @@ namespace SalesWinApp
             this.txtPassword.Size = new System.Drawing.Size(202, 25);
             this.txtPassword.TabIndex = 4;
             // 
-            // txtRole
-            // 
-            this.txtRole.Enabled = false;
-            this.txtRole.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtRole.Location = new System.Drawing.Point(123, 168);
-            this.txtRole.Name = "txtRole";
-            this.txtRole.ReadOnly = true;
-            this.txtRole.Size = new System.Drawing.Size(202, 25);
-            this.txtRole.TabIndex = 7;
-            // 
             // txtEmail
             // 
             this.txtEmail.Enabled = false;
@@ -314,16 +249,6 @@ namespace SalesWinApp
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(202, 25);
             this.txtEmail.TabIndex = 3;
-            // 
-            // lbRole
-            // 
-            this.lbRole.AutoSize = true;
-            this.lbRole.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbRole.Location = new System.Drawing.Point(21, 169);
-            this.lbRole.Name = "lbRole";
-            this.lbRole.Size = new System.Drawing.Size(41, 19);
-            this.lbRole.TabIndex = 0;
-            this.lbRole.Text = "Role";
             // 
             // lbPassword
             // 
@@ -451,6 +376,48 @@ namespace SalesWinApp
             this.txtEmailSearch.Size = new System.Drawing.Size(137, 25);
             this.txtEmailSearch.TabIndex = 13;
             // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "MemberID";
+            this.Column1.HeaderText = "Member ID";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "Email";
+            this.Column3.HeaderText = "Email";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "CompanyName";
+            this.Column2.HeaderText = "Company Name";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "City";
+            this.Column5.HeaderText = "City";
+            this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Country";
+            this.Column6.HeaderText = "Country";
+            this.Column6.Name = "Column6";
+            this.Column6.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "Password";
+            this.Column4.HeaderText = "Password";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
             // frmMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -511,15 +478,12 @@ namespace SalesWinApp
         private System.Windows.Forms.ComboBox cboCity;
         private System.Windows.Forms.Label lbFStore;
         private System.Windows.Forms.Button btnDescSort;
-        private System.Windows.Forms.TextBox txtRole;
-        private System.Windows.Forms.Label lbRole;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.TextBox txtEmailSearch;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
+        private DataGridViewTextBoxColumn Column4;
     }
 }

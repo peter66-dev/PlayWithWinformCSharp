@@ -48,8 +48,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbShowConfirmPassword = new System.Windows.Forms.Label();
             this.lbShowPassword = new System.Windows.Forms.Label();
-            this.lbRole = new System.Windows.Forms.Label();
-            this.cboRole = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -144,7 +142,7 @@
             this.lbCity.AutoSize = true;
             this.lbCity.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCity.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbCity.Location = new System.Drawing.Point(127, 403);
+            this.lbCity.Location = new System.Drawing.Point(127, 366);
             this.lbCity.Name = "lbCity";
             this.lbCity.Size = new System.Drawing.Size(44, 22);
             this.lbCity.TabIndex = 3;
@@ -156,7 +154,7 @@
             this.lbCountry.AutoSize = true;
             this.lbCountry.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.lbCountry.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbCountry.Location = new System.Drawing.Point(127, 449);
+            this.lbCountry.Location = new System.Drawing.Point(127, 412);
             this.lbCountry.Name = "lbCountry";
             this.lbCountry.Size = new System.Drawing.Size(77, 22);
             this.lbCountry.TabIndex = 3;
@@ -167,7 +165,7 @@
             this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnSave.Location = new System.Drawing.Point(303, 523);
+            this.btnSave.Location = new System.Drawing.Point(306, 493);
             this.btnSave.Name = "btnSave";
             this.btnSave.Padding = new System.Windows.Forms.Padding(1);
             this.btnSave.Size = new System.Drawing.Size(85, 37);
@@ -181,7 +179,7 @@
             this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnReset.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReset.Font = new System.Drawing.Font("Times New Roman", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.btnReset.Location = new System.Drawing.Point(423, 523);
+            this.btnReset.Location = new System.Drawing.Point(426, 493);
             this.btnReset.Name = "btnReset";
             this.btnReset.Padding = new System.Windows.Forms.Padding(1);
             this.btnReset.Size = new System.Drawing.Size(85, 37);
@@ -229,7 +227,7 @@
             "Manila",
             "Begawan",
             "Dili"});
-            this.cboCity.Location = new System.Drawing.Point(322, 401);
+            this.cboCity.Location = new System.Drawing.Point(322, 364);
             this.cboCity.Name = "cboCity";
             this.cboCity.Size = new System.Drawing.Size(144, 29);
             this.cboCity.TabIndex = 6;
@@ -251,7 +249,7 @@
             "Brunei",
             "Philippines",
             "DongTimor"});
-            this.cboCountry.Location = new System.Drawing.Point(322, 447);
+            this.cboCountry.Location = new System.Drawing.Point(322, 410);
             this.cboCountry.Name = "cboCountry";
             this.cboCountry.Size = new System.Drawing.Size(144, 29);
             this.cboCountry.TabIndex = 7;
@@ -277,9 +275,7 @@
             this.panel1.Controls.Add(this.lbTitle);
             this.panel1.Controls.Add(this.btnReset);
             this.panel1.Controls.Add(this.cboCountry);
-            this.panel1.Controls.Add(this.lbRole);
             this.panel1.Controls.Add(this.lbID);
-            this.panel1.Controls.Add(this.cboRole);
             this.panel1.Controls.Add(this.cboCity);
             this.panel1.Controls.Add(this.txtID);
             this.panel1.Controls.Add(this.txtConfirmPassword);
@@ -325,31 +321,6 @@
             this.lbShowPassword.Text = "Show";
             this.lbShowPassword.Click += new System.EventHandler(this.lbShowPassword_Click);
             // 
-            // lbRole
-            // 
-            this.lbRole.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lbRole.AutoSize = true;
-            this.lbRole.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbRole.ForeColor = System.Drawing.Color.DarkBlue;
-            this.lbRole.Location = new System.Drawing.Point(127, 359);
-            this.lbRole.Name = "lbRole";
-            this.lbRole.Size = new System.Drawing.Size(48, 22);
-            this.lbRole.TabIndex = 1;
-            this.lbRole.Text = "Role";
-            // 
-            // cboRole
-            // 
-            this.cboRole.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.cboRole.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.cboRole.FormattingEnabled = true;
-            this.cboRole.Items.AddRange(new object[] {
-            "User",
-            "Admin"});
-            this.cboRole.Location = new System.Drawing.Point(322, 359);
-            this.cboRole.Name = "cboRole";
-            this.cboRole.Size = new System.Drawing.Size(144, 29);
-            this.cboRole.TabIndex = 6;
-            // 
             // frmMemberDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -388,8 +359,6 @@
         private System.Windows.Forms.ComboBox cboCountry;
         private System.Windows.Forms.Label lbTitle;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Label lbRole;
-        private System.Windows.Forms.ComboBox cboRole;
         private System.Windows.Forms.Label lbShowConfirmPassword;
         private System.Windows.Forms.Label lbShowPassword;
     }

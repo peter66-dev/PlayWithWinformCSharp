@@ -142,22 +142,39 @@ namespace SalesWinApp
             bool check = true;
             try
             {
-                if (!(float.TryParse(txtDiscount.Text, out float discount) && (discount > 0 && discount < 1)))
+                if (!(float.TryParse(txtDiscount.Text, out float discount) && (discount >= 0 && discount < 1)))
                 {
                     txtDiscount.Focus();
                     check = false;
-                    MessageBox.Show("Sorry, discount must be in (0-1) please!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Sorry, discount must be in [0-1) please!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnSave.Enabled = false;
+                }
+                else if (!(decimal.TryParse(txtFreight.Text, out decimal valuee) && (valuee >= 0 && valuee <= 1000000)))
+                {
+                    txtFreight.Focus();
+                    check = false;
+                    MessageBox.Show("Sorry, Freight must be in [0-1000000] VND!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnSave.Enabled = false;
+                }
+                else if (!(decimal.TryParse(txtPaidAmount.Text, out decimal paid)))
+                {
+                    txtPaidAmount.Focus();
+                    check = false;
+                    MessageBox.Show("Sorry, Paid Amount must be in positive number!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    btnSave.Enabled = false;
                 }
                 else
                 {
                     double paidAmount = double.Parse(txtPaidAmount.Text);
+                    double freight = double.Parse(txtFreight.Text);
                     double grandTotal = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2);
-                    if (!(paidAmount >= grandTotal))
+                    if (!(paidAmount - grandTotal - freight >= 0))
                     {
                         check = false;
                         txtPaidAmount.Focus();
-                        MessageBox.Show($"Paid Amount: {paidAmount} must be more than Grand Total: {grandTotal}!",
+                        MessageBox.Show($"Paid Amount: {paidAmount} is not enough for this bill value:\n{grandTotal} + {freight} = {grandTotal + freight}!",
                         "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        btnSave.Enabled = false;
                     }
                 }
             }
@@ -219,8 +236,8 @@ namespace SalesWinApp
                 txtGrandTotal.Text = Math.Round(GrandTotal(float.Parse(txtDiscount.Text)), 2).ToString();
                 btnAdd.Enabled = false;
                 btnAdd.BackColor = Color.DarkOliveGreen;
-                double returnAmount = double.Parse(txtPaidAmount.Text) - double.Parse(txtGrandTotal.Text);
-                txtReturnAmount.Text = returnAmount.ToString();
+                double returnAmount = double.Parse(txtPaidAmount.Text) - double.Parse(txtGrandTotal.Text) - (double)decimal.Parse(txtFreight.Text);
+                txtReturnAmount.Text = Math.Round(returnAmount, 2).ToString();
 
 
                 //Check quantity in stock!
@@ -231,6 +248,7 @@ namespace SalesWinApp
                 }
                 else
                 {
+                    btnSave.Enabled = false;
                     string msg = "";
                     foreach (string str in checkQuantityProduct)
                     {
@@ -245,34 +263,42 @@ namespace SalesWinApp
         private void btnSave_Click(object sender, EventArgs e)
         {
             //add new order
-            int memID = int.Parse(txtMemberID.Text);
-            int countingOrders = orderRepository.GetCountingOrders();
-            decimal grandTotal = Math.Round(decimal.Parse(txtGrandTotal.Text), 2);
-            orderRepository.InsertOrder(++countingOrders, memID, grandTotal);
-
-            //add new order details
-            foreach (var pro in cart)
+            if (CheckFormCalculation())
             {
-                OrderDetailObject or = new OrderDetailObject()
+                int memID = int.Parse(txtMemberID.Text);
+                int countingOrders = orderRepository.GetCountingOrders(); // có khóa là int KHÔNG TỰ TĂNG nên phải đếm số lượng rồi +1 làm khóa
+                decimal freight = Math.Round(decimal.Parse(txtFreight.Text), 2);
+                orderRepository.InsertOrder(++countingOrders, memID, freight); // freight là phí ship!
+                bool check = false;
+                //add new order details
+                foreach (var pro in cart)
                 {
-                    OrderID = countingOrders,
-                    ProductID = pro.ProductID,
-                    UnitPrice = Math.Round(pro.UnitPrice, 2),
-                    Quantity = pro.UnitsInStock, // Chỗ này UnitsInStock là số lượng mua của customer
-                    Discount = Math.Round(float.Parse(txtDiscount.Text), 5),
-                    Total = Math.Round((double)pro.UnitPrice * pro.UnitsInStock, 2)
-                };
-                orderDetailRepository.InsertOrderDetail(or);
-            }
+                    OrderDetailObject or = new OrderDetailObject()
+                    {
+                        OrderID = countingOrders,// bug?
+                        ProductID = pro.ProductID,
+                        UnitPrice = Math.Round(pro.UnitPrice, 2),
+                        Quantity = pro.UnitsInStock, // Chỗ này UnitsInStock là số lượng mua của customer
+                        Discount = Math.Round(float.Parse(txtDiscount.Text), 5),
+                    };
+                    orderDetailRepository.InsertOrderDetail(or);
+                    List<string> checkQuantityProduct = proRepository.CheckQuantity(cart);
+                    if (checkQuantityProduct.Count == 0) // Check đủ -> ko add thêm , tiến hành add order | order detail -> btnSave_Click
+                    {
+                        // Thêm hàm trừ số lượng chỗ này
 
-            //Sub quantity in stock 
+                    }
+                    check = true;
+                }
 
-        }
-        private void frmCreateOrders_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            if (MessageBox.Show("Are you sure to quit?", "Confirm information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)
-            {
-                e.Cancel = true;
+                if (check)
+                {
+                    MessageBox.Show("Creating order successfully!\nWait a moment, your product is on its way!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    Close();
+                }
+
+                //Sub quantity in stock 
+
             }
         }
     }

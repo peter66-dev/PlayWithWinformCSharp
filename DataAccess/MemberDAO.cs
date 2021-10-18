@@ -35,7 +35,6 @@ namespace DataAccess.Repository
         }
         SqlConnection connection;
         SqlCommand command;
-        //string ConnectionString = "Server=(local);uid=sa;pwd=sa;database=FStore";
         static string GetConnectionString()
         {
             string connectionString;
@@ -65,7 +64,6 @@ namespace DataAccess.Repository
                     mem.City = reader.GetString("City").Trim();
                     mem.Country = reader.GetString("Country").Trim();
                     mem.Password = reader.GetString("Password").Trim();
-                    mem.Role = reader.GetString("Role").Trim();
                 }
             }
             catch (Exception ex)
@@ -114,7 +112,7 @@ namespace DataAccess.Repository
         {
             List<MemberObject> list = new List<MemberObject>();
             connection = new SqlConnection(GetConnectionString());
-            string SQL = "Select MemberID, Email, CompanyName, City, Country, Password, Role from tblMember";
+            string SQL = "Select MemberID, Email, CompanyName, City, Country, Password from tblMember";
             command = new SqlCommand(SQL, connection);
             try
             {
@@ -130,7 +128,6 @@ namespace DataAccess.Repository
                             CompanyName = reader.GetString("CompanyName").Trim(),
                             Email = reader.GetString("Email").Trim(),
                             Password = reader.GetString("Password").Trim(),
-                            Role = reader.GetString("Role").Trim(),
                             City = reader.GetString("City").Trim(),
                             Country = reader.GetString("Country")
                         });
@@ -151,7 +148,7 @@ namespace DataAccess.Repository
         public MemberObject GetMemberByEmailPassword(string emailLogin, string pswLogin)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select MemberID, Email, Companyname, City, Country, Password, Role from tblMember where Email = @Email and Password = @Password", connection);
+            command = new SqlCommand("Select MemberID, Email, Companyname, City, Country, Password from tblMember where Email = @Email and Password = @Password", connection);
             command.Parameters.AddWithValue("@Email", emailLogin);
             command.Parameters.AddWithValue("@Password", pswLogin);
             MemberObject mem = new MemberObject();
@@ -167,7 +164,6 @@ namespace DataAccess.Repository
                     mem.City = reader.GetString("City").Trim();
                     mem.Country = reader.GetString("Country").Trim();
                     mem.Password = reader.GetString("Password").Trim();
-                    mem.Role = reader.GetString("Role").Trim();
                 }
             }
             catch (Exception ex)
@@ -184,7 +180,7 @@ namespace DataAccess.Repository
         public List<MemberObject> GetMemberByIDAndEmail(int id, string email)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select Companyname, City, Country, Password, Role from tblMember where Email = @Email and MemberID = @MemberID", connection);
+            command = new SqlCommand("Select Companyname, City, Country, Password from tblMember where Email = @Email and MemberID = @MemberID", connection);
             command.Parameters.AddWithValue("@Email", email);
             command.Parameters.AddWithValue("@MemberID", id);
             List<MemberObject> list = new List<MemberObject>();
@@ -201,7 +197,6 @@ namespace DataAccess.Repository
                     mem.City = reader.GetString("City").Trim();
                     mem.Country = reader.GetString("Country").Trim();
                     mem.Password = reader.GetString("Password").Trim();
-                    mem.Role = reader.GetString("Role").Trim();
                     list.Add(mem);
                 }
             }
@@ -219,14 +214,13 @@ namespace DataAccess.Repository
         public void InsertMember(MemberObject mem)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Insert INTO tblMember(Email, CompanyName, City, Country, Password, Role) " +
-                "values(@Email, @CompanyName, @City, @Country, @Password, @Role)", connection);
+            command = new SqlCommand("Insert INTO tblMember(Email, CompanyName, City, Country, Password) " +
+                "values(@Email, @CompanyName, @City, @Country, @Password)", connection);
             command.Parameters.Add("@Email", SqlDbType.VarChar).Value = mem.Email;
             command.Parameters.Add("@CompanyName", SqlDbType.VarChar).Value = mem.CompanyName;
             command.Parameters.Add("@City", SqlDbType.VarChar).Value = mem.City;
             command.Parameters.Add("@Country", SqlDbType.VarChar).Value = mem.Country;
             command.Parameters.Add("@Password", SqlDbType.VarChar).Value = mem.Password;
-            command.Parameters.Add("@Role", SqlDbType.VarChar).Value = mem.Role;
             try
             {
                 connection.Open();
