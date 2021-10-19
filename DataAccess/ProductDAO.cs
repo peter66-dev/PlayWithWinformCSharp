@@ -48,7 +48,7 @@ namespace DataAccess
         {
             List<ProductObject> list = new List<ProductObject>();
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select ProductID, CategoryID, ProductName, Weight , UnitPrice, UnitsInStock From tblProduct", connection);
+            command = new SqlCommand("Select ProductID, CategoryID, ProductName, Weight , UnitPrice, UnitsInStock From [Product]", connection);
             try
             {
                 connection.Open();
@@ -81,7 +81,7 @@ namespace DataAccess
         public void InsertProduct(int cateID, string proName, string weight, decimal unitPrice, int stocks)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("INSERT INTO tblProduct(CategoryID, ProductName, Weight, UnitPrice, UnitsInStock) " +
+            command = new SqlCommand("INSERT INTO [Product](CategoryID, ProductName, Weight, UnitPrice, UnitsInStock) " +
                 "values(@CategoryID, @ProductName, @Weight, @UnitPrice, @UnitsInStock)", connection);
             command.Parameters.AddWithValue("@CategoryID", cateID);
             command.Parameters.AddWithValue("@ProductName", proName);
@@ -106,7 +106,7 @@ namespace DataAccess
         public void DeleteProduct(int id)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Delete tblProduct Where ProductID = @ProductID", connection);
+            command = new SqlCommand("Delete [Product] Where ProductID = @ProductID", connection);
             command.Parameters.AddWithValue("@ProductID", id);
 
             try
@@ -127,7 +127,7 @@ namespace DataAccess
         public void UpdateProduct(ProductObject pro)//KHÔNG UPDATE PRODUCTID
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Update tblProduct set CategoryID = @CategoryID, ProductName = @ProductName, " +
+            command = new SqlCommand("Update [Product] set CategoryID = @CategoryID, ProductName = @ProductName, " +
                 "Weight = @Weight, UnitPrice = @UnitPrice, UnitsInStock = @UnitsInStock where ProductID = @ProductID", connection);
             command.Parameters.AddWithValue("@ProductID", pro.ProductID);
             command.Parameters.AddWithValue("@CategoryID", pro.CategoryID);
@@ -154,7 +154,7 @@ namespace DataAccess
         public ProductObject GetProductByID(int id)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from tblProduct " +
+            command = new SqlCommand("select CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from [Product] " +
                 "where ProductID = @ProductID", connection);
             command.Parameters.AddWithValue("@ProductID", id);
             ProductObject pro = new ProductObject();
@@ -187,7 +187,8 @@ namespace DataAccess
         {
             List<ProductObject> list = new List<ProductObject>();
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select ProductID, CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from tblProduct where ProductName LIKE @Search ", connection);
+            command = new SqlCommand("select ProductID, CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from [Product] " +
+                "where ProductName LIKE @Search ", connection);
             command.Parameters.AddWithValue("@Search", '%' + name + '%');
             try
             {
@@ -220,7 +221,7 @@ namespace DataAccess
         public ProductObject GetProductByIDAndName(int id, string name)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from tblProduct " +
+            command = new SqlCommand("select CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from [Product] " +
                 "where ProductID = @ProductID and ProductName LIKE @ProductName", connection);
             command.Parameters.AddWithValue("@ProductID", id);
             command.Parameters.AddWithValue("@ProductName", '%' + name + '%');
@@ -268,7 +269,7 @@ namespace DataAccess
         {
             int quantity = 0;
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select UnitsInStock from tblProduct where ProductID = @ProductID", connection);
+            command = new SqlCommand("select UnitsInStock from [Product] where ProductID = @ProductID", connection);
             command.Parameters.AddWithValue("@ProductID", proID);
             try
             {
@@ -297,7 +298,7 @@ namespace DataAccess
                 int id = p.ProductID;
                 int quantityBuy = p.UnitsInStock;
                 connection = new SqlConnection(GetConnectionString());
-                command = new SqlCommand("update tblProduct set UnitsInStock = UnitsInStock - @QuantityBuy where ProductID = @ProductID", connection);
+                command = new SqlCommand("update [Product] set UnitsInStock = UnitsInStock - @QuantityBuy where ProductID = @ProductID", connection);
                 command.Parameters.AddWithValue("@QuantityBuy", quantityBuy);
                 command.Parameters.AddWithValue("@ProductID", id);
                 try

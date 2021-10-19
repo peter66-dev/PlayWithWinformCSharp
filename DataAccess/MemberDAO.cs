@@ -49,7 +49,7 @@ namespace DataAccess.Repository
         public MemberObject GetMemberByID(int id)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select Email, Companyname, City, Country, Password from tblMember where MemberID = @memberid", connection);
+            command = new SqlCommand("Select Email, Companyname, City, Country, Password from [Member] where MemberID = @memberid", connection);
             command.Parameters.AddWithValue("@memberid", id);
             MemberObject mem = new MemberObject();
             try
@@ -80,7 +80,7 @@ namespace DataAccess.Repository
         public MemberObject GetMemberByEmail(string email)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select Email, MemberID, Companyname, City, Country, Password from tblMember where Email LIKE @email", connection);
+            command = new SqlCommand("Select Email, MemberID, Companyname, City, Country, Password from [Member] where Email LIKE @email", connection);
             command.Parameters.AddWithValue("@email", '%' + email + '%');
             MemberObject mem = new MemberObject();
             try
@@ -112,7 +112,7 @@ namespace DataAccess.Repository
         {
             List<MemberObject> list = new List<MemberObject>();
             connection = new SqlConnection(GetConnectionString());
-            string SQL = "Select MemberID, Email, CompanyName, City, Country, Password from tblMember";
+            string SQL = "Select MemberID, Email, CompanyName, City, Country, Password from [Member]";
             command = new SqlCommand(SQL, connection);
             try
             {
@@ -148,7 +148,8 @@ namespace DataAccess.Repository
         public MemberObject GetMemberByEmailPassword(string emailLogin, string pswLogin)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select MemberID, Email, Companyname, City, Country, Password from tblMember where Email = @Email and Password = @Password", connection);
+            command = new SqlCommand("Select MemberID, Email, Companyname, City, Country, Password from [Member] " +
+                "where Email = @Email and Password = @Password", connection);
             command.Parameters.AddWithValue("@Email", emailLogin);
             command.Parameters.AddWithValue("@Password", pswLogin);
             MemberObject mem = new MemberObject();
@@ -180,7 +181,8 @@ namespace DataAccess.Repository
         public List<MemberObject> GetMemberByIDAndEmail(int id, string email)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select Companyname, City, Country, Password from tblMember where Email = @Email and MemberID = @MemberID", connection);
+            command = new SqlCommand("Select Companyname, City, Country, Password from [Member] " +
+                "where Email = @Email and MemberID = @MemberID", connection);
             command.Parameters.AddWithValue("@Email", email);
             command.Parameters.AddWithValue("@MemberID", id);
             List<MemberObject> list = new List<MemberObject>();
@@ -214,7 +216,7 @@ namespace DataAccess.Repository
         public void InsertMember(MemberObject mem)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Insert INTO tblMember(Email, CompanyName, City, Country, Password) " +
+            command = new SqlCommand("Insert INTO [Member](Email, CompanyName, City, Country, Password) " +
                 "values(@Email, @CompanyName, @City, @Country, @Password)", connection);
             command.Parameters.Add("@Email", SqlDbType.VarChar).Value = mem.Email;
             command.Parameters.Add("@CompanyName", SqlDbType.VarChar).Value = mem.CompanyName;
@@ -239,7 +241,8 @@ namespace DataAccess.Repository
         public void UpdateMember(MemberObject mem)//Không update role
         {
             connection = new SqlConnection(GetConnectionString());
-            string SQL = "Update tblMember set Email = @Email, City = @City, CompanyName = @CompanyName, Country = @Country, Password = @Password Where MemberID = @MemberID";
+            string SQL = "Update [Member] set Email = @Email, City = @City, CompanyName = @CompanyName, Country = @Country, " +
+                "Password = @Password Where MemberID = @MemberID";
             command = new SqlCommand(SQL, connection);
             command.Parameters.AddWithValue("@Email", mem.Email);
             command.Parameters.AddWithValue("@City", mem.City);
@@ -265,7 +268,7 @@ namespace DataAccess.Repository
         public void DeleteMember(int id)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Delete tblMember Where MemberID = @MemberID", connection);
+            command = new SqlCommand("Delete [Member] Where MemberID = @MemberID", connection);
             command.Parameters.AddWithValue("@MemberID", id);
             try
             {

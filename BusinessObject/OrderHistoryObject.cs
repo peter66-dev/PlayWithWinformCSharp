@@ -19,7 +19,14 @@ namespace BusinessObject
 
         public OrderHistoryObject()
         {
-
+            OrderID = 0;
+            ProductID = 0;
+            UnitPrice = 0;
+            QuantityBuy = 0;
+            Discount = 0;
+            OrderDate = new DateTime();
+            RequiredDate = new DateTime();
+            ShippedDate = new DateTime();
         }
 
         public OrderHistoryObject(DateTime order, DateTime required, DateTime shipped, int orderid, int proID, decimal price, int quantity, float discount)

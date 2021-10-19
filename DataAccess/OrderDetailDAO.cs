@@ -46,7 +46,7 @@ namespace DataAccess
         {
             List<OrderDetailObject> list = new List<OrderDetailObject>();
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select OrderID, ProductID, UnitPrice, Quantity, Discount from tblOrderDetail", connection);
+            command = new SqlCommand("select OrderID, ProductID, UnitPrice, Quantity, Discount from [OrderDetail]", connection);
             try
             {
                 connection.Open();
@@ -77,7 +77,7 @@ namespace DataAccess
         public void InsertOrderDetail(OrderDetailObject order)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("insert into tblOrderDetail(OrderID, ProductID, UnitPrice, Quantity, Discount) " +
+            command = new SqlCommand("insert into [OrderDetail](OrderID, ProductID, UnitPrice, Quantity, Discount) " +
                 "values(@OrderID, @ProductID, @UnitPrice, @Quantity, @Discount)", connection);
             command.Parameters.AddWithValue("@OrderID", order.OrderID);
             command.Parameters.AddWithValue("@ProductID", order.ProductID);

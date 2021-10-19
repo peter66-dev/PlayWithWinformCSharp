@@ -47,7 +47,7 @@ namespace DataAccess
         {
             List<OrderObject> list = new List<OrderObject>();
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight from tblOrder", connection);
+            command = new SqlCommand("select OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight from [Order]", connection);
             try
             {
                 connection.Open();
@@ -80,7 +80,7 @@ namespace DataAccess
         public void InsertOrder(int orderid, int memberid, decimal freight)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("INSERT INTO tblOrder(OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight) " +
+            command = new SqlCommand("INSERT INTO [Order](OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight) " +
                 "values(@OrderID, @MemberID, getdate(), getdate(), getdate(), @Freight)", connection);
             command.Parameters.AddWithValue("@MemberID", memberid);
             command.Parameters.AddWithValue("@OrderID", orderid);
@@ -103,7 +103,7 @@ namespace DataAccess
         public void DeleteOrder(int orderID)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Delete tblOrder where OrderID = @OrderID", connection);
+            command = new SqlCommand("Delete [Order] where OrderID = @OrderID", connection);
             command.Parameters.AddWithValue("@OrderID", orderID);
             try
             {
@@ -123,7 +123,7 @@ namespace DataAccess
         public void UpdateOrder(OrderObject order)
         {
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("update tblOrder set MemberID = @MemberID, OrderDate = @OrderDate, " +
+            command = new SqlCommand("update [Order] set MemberID = @MemberID, OrderDate = @OrderDate, " +
                 "RequiredDate = @RequiredDate, ShippedDate = @ShippedDate, Freight = @Freight where OrderID = @OrderID", connection);
             command.Parameters.AddWithValue("@MemberID", order.MemberID);
             command.Parameters.AddWithValue("@OrderDate", order.OrderDate);
@@ -150,7 +150,7 @@ namespace DataAccess
         {
             OrderObject order = new OrderObject();
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("Select MemberID, OrderDate, RequiredDate, ShippedDate, Freight from tblOrder where OrderID = @OrderID", connection);
+            command = new SqlCommand("Select MemberID, OrderDate, RequiredDate, ShippedDate, Freight from [Order] where OrderID = @OrderID", connection);
             command.Parameters.AddWithValue("@OrderID", id);
             try
             {
@@ -185,7 +185,7 @@ namespace DataAccess
         {
             int count = 0;
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select count(OrderID) as Total from tblOrder", connection);
+            command = new SqlCommand("select count(OrderID) as Total from [Order]", connection);
             try
             {
                 connection.Open();

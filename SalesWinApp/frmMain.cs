@@ -31,7 +31,7 @@ namespace SalesWinApp
 
         private void btnOrder_Click(object sender, EventArgs e)
         {
-            frmMembers frm = new frmMembers();
+            frmOrderManagement frm = new frmOrderManagement();
             frm.Show();
         }
 
