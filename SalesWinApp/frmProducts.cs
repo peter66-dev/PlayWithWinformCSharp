@@ -102,7 +102,7 @@ namespace SalesWinApp
             txtStocks.Clear();
         }
 
-        
+
 
         private ProductObject GetProductObject()
         {
@@ -149,7 +149,7 @@ namespace SalesWinApp
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            var frm  = new frmProductDetails()
+            var frm = new frmProductDetails()
             {
                 Text = "Add a new Product",
                 InsertOrUpdate = false,
@@ -182,8 +182,13 @@ namespace SalesWinApp
         private void btnDelete_Click(object sender, EventArgs e)
         {
             var pro = GetProductObject();
-            if (MessageBox.Show($"Are you sure to delete product name: {pro.ProductName}?", "Confirm message", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            if (MessageBox.Show($"Are you sure to delete product name: {pro.ProductName}?",
+                    "Confirm message", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
+                MessageBox.Show("Can delete this product because it's foreign key of another table in sql server!",
+                    "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                // KHÔNG CHO DELETE VÌ CÁC SẢN PHẦM ĐANG LÀM KHÓA NGOẠI BÊN KIA
+                /*
                 try
                 {
                     source.Position = 0;
@@ -206,13 +211,15 @@ namespace SalesWinApp
                     if (proRepository.GetProducts().Count() == 1)
                     {
                         btnDelete.Enabled = false;
-                        MessageBox.Show("We have only 1 product existing in list, now.\nPlease don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("We have only 1 product existing in list, now.\n" +
+                            "Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message, "Delete a Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                */
             }
         }
 

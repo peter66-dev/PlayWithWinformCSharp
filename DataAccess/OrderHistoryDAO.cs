@@ -99,14 +99,14 @@ namespace DataAccess
                     while (rs.Read())
                     {
                         OrderHistoryObject o = new OrderHistoryObject();
-                        o.OrderDate = rs.GetDateTime(0);
-                        o.ShippedDate = rs.GetDateTime(1);
-                        o.RequiredDate = rs.GetDateTime(2);
-                        o.ProductID = rs.GetInt32(3);
-                        o.OrderID = rs.GetInt32(4);
-                        o.UnitPrice = rs.GetDecimal(5);
-                        o.QuantityBuy = rs.GetInt32(6);
-                        o.Discount = rs.GetDouble(7); 
+                        o.OrderDate = rs.GetDateTime("OrderDate");
+                        o.ShippedDate = rs.GetDateTime("ShippedDate");
+                        o.RequiredDate = rs.GetDateTime("RequiredDate");
+                        o.ProductID = rs.GetInt32("ProductID");
+                        o.OrderID = rs.GetInt32("OrderID");
+                        o.UnitPrice = rs.GetDecimal("UnitPrice");
+                        o.QuantityBuy = rs.GetInt32("Quantity");
+                        o.Discount = rs.GetDouble("Discount"); 
                         list.Add(o);
                     }
                 }
