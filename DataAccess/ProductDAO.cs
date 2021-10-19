@@ -11,7 +11,6 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-
     public class ProductDAO
     {
         private static ProductDAO instance = null;

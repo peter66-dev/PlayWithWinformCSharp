@@ -14,7 +14,7 @@ namespace SalesWinApp
 {
     public partial class frmOrderManagement : Form
     {
-        IOrderHistoryRepository orderRepository = new OrderHistoryRepository();
+        IOrderRepository orderRepository = new OrderRepository();
         BindingSource source = new BindingSource();
         IEnumerable<OrderHistoryObject> orders = null;
         public frmOrderManagement()
@@ -23,7 +23,7 @@ namespace SalesWinApp
         }
         private void frmOrderManagement_Load(object sender, EventArgs e)
         {
-            LoadOrderList(orderRepository.GetOrdersHistory());
+            LoadOrderList(orderRepository.GetOrderHistoryList());
         }
         private void LoadOrderList(IEnumerable<OrderHistoryObject> list)
         {
@@ -31,25 +31,32 @@ namespace SalesWinApp
             {
                 source.DataSource = list;
                 txtOrderID.DataBindings.Clear();
-                txtProID.DataBindings.Clear();
-                txtUnitPrice.DataBindings.Clear();
-                txtQuantityBuy.DataBindings.Clear();
-                txtDiscount.DataBindings.Clear();
+                txtMemID.DataBindings.Clear();
                 txtOrderDate.DataBindings.Clear();
                 txtRequiredDate.DataBindings.Clear();
                 txtShippedDate.DataBindings.Clear();
+                txtFreight.DataBindings.Clear();
+                txtTotal.DataBindings.Clear();
 
                 txtOrderID.DataBindings.Add("Text", source, "OrderID");
-                txtProID.DataBindings.Add("Text", source, "ProductID");
-                txtUnitPrice.DataBindings.Add("Text", source, "UnitPrice");
-                txtQuantityBuy.DataBindings.Add("Text", source, "QuantityBuy");
-                txtDiscount.DataBindings.Add("Text", source, "Discount");
+                txtMemID.DataBindings.Add("Text", source, "MemberID");
                 txtOrderDate.DataBindings.Add("Text", source, "OrderDate");
                 txtRequiredDate.DataBindings.Add("Text", source, "RequiredDate");
                 txtShippedDate.DataBindings.Add("Text", source, "ShippedDate");
+                txtFreight.DataBindings.Add("Text", source, "Freight");
+                txtTotal.DataBindings.Add("Text", source, "Total");
+
+
 
                 dgvOrderList.DataSource = null;
                 dgvOrderList.DataSource = source;
+                dgvOrderList.Columns["OrderID"].DisplayIndex = 0;
+                dgvOrderList.Columns["MemberID"].DisplayIndex = 1;
+                dgvOrderList.Columns["OrderDate"].DisplayIndex = 2;
+                dgvOrderList.Columns["RequiredDate"].DisplayIndex = 3;
+                dgvOrderList.Columns["ShippedDate"].DisplayIndex = 4;
+                dgvOrderList.Columns["Freight"].DisplayIndex = 5;
+                dgvOrderList.Columns["Total"].DisplayIndex = 6;
                 if (list.Count() == 0)
                 {
                     ClearText();
@@ -81,23 +88,22 @@ namespace SalesWinApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Load order history list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show(ex.Message, "Load order history list", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
         private void ClearText()
         {
-            txtProID.Clear();
-            txtUnitPrice.Clear();
-            txtQuantityBuy.Clear();
-            txtDiscount.Clear();
+            txtMemID.Clear();
+            txtFreight.Clear();
+            txtTotal.Clear();
             txtOrderDate.Clear();
             txtRequiredDate.Clear();
             txtShippedDate.Clear();
         }
         private void btnLoad_Click(object sender, EventArgs e)
         {
-            LoadOrderList(orderRepository.GetOrdersHistory());
+            LoadOrderList(orderRepository.GetOrderHistoryList());
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -116,14 +122,19 @@ namespace SalesWinApp
             try
             {
                 int orderID = int.Parse(txtOrderID.Text);
-                int productID = int.Parse(txtProID.Text);
+                int productID = int.Parse(txtMemID.Text);
                 if (MessageBox.Show($"Are you sure to delete Order ID: {orderID} ,Product ID: {productID}", "Message",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    orderRepository.DeleteOrderHistory(orderID, productID);
+                    //không được delete vì nếu mở rộng sẽ bị tham chiếu khóa trong bảng! Không nên delete, chỉ nên set status = Deactived
+                    /*
+                    orderRepository.DeleteOrder(orderID);
                     MessageBox.Show($"Deleting Order ID:  {orderID}, Product ID: {productID} successfully!\n" +
                         $"Load again to see the new list", "Error message",
                     MessageBoxButtons.OK);
+                    */
+                    MessageBox.Show($"Sorry, you can not delete this Order ID: {orderID} ,Product ID: {productID}\n" +
+                        $"Because it's a foreign key of another table!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)
@@ -135,17 +146,17 @@ namespace SalesWinApp
 
         private void btnAscSort_Click(object sender, EventArgs e)
         {
-            LoadOrderList(orderRepository.SortOrdersHistoryAscending());
+            LoadOrderList(orderRepository.SortByDateAscending());
         }
 
         private void btnDescSort_Click(object sender, EventArgs e)
         {
-            LoadOrderList(orderRepository.SortOrdersHistoryDescending());
+            LoadOrderList(orderRepository.SortByDateDescending());
         }
 
         private void btnStatistic_Click(object sender, EventArgs e)
         {
-
+            txtTotalStatistic.Text = Math.Round(orderRepository.StatisticMoney(3, 20), 3).ToString();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

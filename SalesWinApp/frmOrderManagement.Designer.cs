@@ -32,6 +32,13 @@ namespace SalesWinApp
         private void InitializeComponent()
         {
             this.dgvOrderList = new System.Windows.Forms.DataGridView();
+            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnLoad = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnUpdate = new System.Windows.Forms.Button();
@@ -39,21 +46,19 @@ namespace SalesWinApp
             this.btnClose = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbShippedDate = new System.Windows.Forms.Label();
-            this.lbDiscount = new System.Windows.Forms.Label();
-            this.lbQuantityBuy = new System.Windows.Forms.Label();
+            this.lbTotal = new System.Windows.Forms.Label();
             this.txtShippedDate = new System.Windows.Forms.TextBox();
             this.txtRequiredDate = new System.Windows.Forms.TextBox();
-            this.txtDiscount = new System.Windows.Forms.TextBox();
-            this.txtQuantityBuy = new System.Windows.Forms.TextBox();
-            this.txtUnitPrice = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
+            this.txtFreight = new System.Windows.Forms.TextBox();
             this.lbRequiredDate = new System.Windows.Forms.Label();
-            this.lbUnitPrice = new System.Windows.Forms.Label();
+            this.lbFreight = new System.Windows.Forms.Label();
             this.txtOrderDate = new System.Windows.Forms.TextBox();
             this.lbOrderDate = new System.Windows.Forms.Label();
             this.txtOrderID = new System.Windows.Forms.TextBox();
             this.lbOrderID = new System.Windows.Forms.Label();
-            this.txtProID = new System.Windows.Forms.TextBox();
-            this.lbProductID = new System.Windows.Forms.Label();
+            this.txtMemID = new System.Windows.Forms.TextBox();
+            this.lbMemberID = new System.Windows.Forms.Label();
             this.btnStatistic = new System.Windows.Forms.Button();
             this.btnAscSort = new System.Windows.Forms.Button();
             this.lbFStore = new System.Windows.Forms.Label();
@@ -63,14 +68,6 @@ namespace SalesWinApp
             this.lbEnd = new System.Windows.Forms.Label();
             this.txtStart = new System.Windows.Forms.TextBox();
             this.txtEnd = new System.Windows.Forms.TextBox();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -85,17 +82,63 @@ namespace SalesWinApp
             this.dgvOrderList.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column8,
             this.Column4,
-            this.Column5,
-            this.Column6,
-            this.Column7,
             this.Column1,
             this.Column2,
-            this.Column3});
+            this.Column3,
+            this.Column5,
+            this.Column6});
             this.dgvOrderList.Location = new System.Drawing.Point(15, 372);
             this.dgvOrderList.Name = "dgvOrderList";
             this.dgvOrderList.RowTemplate.Height = 25;
             this.dgvOrderList.Size = new System.Drawing.Size(1157, 246);
             this.dgvOrderList.TabIndex = 1;
+            // 
+            // Column8
+            // 
+            this.Column8.DataPropertyName = "OrderID";
+            this.Column8.HeaderText = "Order ID";
+            this.Column8.Name = "Column8";
+            this.Column8.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            this.Column4.DataPropertyName = "MemberID";
+            this.Column4.HeaderText = "Member ID";
+            this.Column4.Name = "Column4";
+            this.Column4.ReadOnly = true;
+            // 
+            // Column1
+            // 
+            this.Column1.DataPropertyName = "OrderDate";
+            this.Column1.HeaderText = "Order Date";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "RequiredDate";
+            this.Column2.HeaderText = "Required Date";
+            this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            this.Column3.DataPropertyName = "ShippedDate";
+            this.Column3.HeaderText = "Shipped Date";
+            this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
+            // 
+            // Column5
+            // 
+            this.Column5.DataPropertyName = "Freight";
+            this.Column5.HeaderText = "Freight";
+            this.Column5.Name = "Column5";
+            // 
+            // Column6
+            // 
+            this.Column6.DataPropertyName = "Total";
+            this.Column6.HeaderText = "Total (VND)";
+            this.Column6.Name = "Column6";
             // 
             // btnLoad
             // 
@@ -162,21 +205,19 @@ namespace SalesWinApp
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.panel1.Controls.Add(this.lbShippedDate);
-            this.panel1.Controls.Add(this.lbDiscount);
-            this.panel1.Controls.Add(this.lbQuantityBuy);
+            this.panel1.Controls.Add(this.lbTotal);
             this.panel1.Controls.Add(this.txtShippedDate);
             this.panel1.Controls.Add(this.txtRequiredDate);
-            this.panel1.Controls.Add(this.txtDiscount);
-            this.panel1.Controls.Add(this.txtQuantityBuy);
-            this.panel1.Controls.Add(this.txtUnitPrice);
+            this.panel1.Controls.Add(this.txtTotal);
+            this.panel1.Controls.Add(this.txtFreight);
             this.panel1.Controls.Add(this.lbRequiredDate);
-            this.panel1.Controls.Add(this.lbUnitPrice);
+            this.panel1.Controls.Add(this.lbFreight);
             this.panel1.Controls.Add(this.txtOrderDate);
             this.panel1.Controls.Add(this.lbOrderDate);
             this.panel1.Controls.Add(this.txtOrderID);
             this.panel1.Controls.Add(this.lbOrderID);
-            this.panel1.Controls.Add(this.txtProID);
-            this.panel1.Controls.Add(this.lbProductID);
+            this.panel1.Controls.Add(this.txtMemID);
+            this.panel1.Controls.Add(this.lbMemberID);
             this.panel1.Enabled = false;
             this.panel1.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.panel1.Location = new System.Drawing.Point(15, 69);
@@ -194,25 +235,15 @@ namespace SalesWinApp
             this.lbShippedDate.TabIndex = 0;
             this.lbShippedDate.Text = "Shipped Date";
             // 
-            // lbDiscount
+            // lbTotal
             // 
-            this.lbDiscount.AutoSize = true;
-            this.lbDiscount.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbDiscount.Location = new System.Drawing.Point(420, 169);
-            this.lbDiscount.Name = "lbDiscount";
-            this.lbDiscount.Size = new System.Drawing.Size(68, 19);
-            this.lbDiscount.TabIndex = 0;
-            this.lbDiscount.Text = "Discount";
-            // 
-            // lbQuantityBuy
-            // 
-            this.lbQuantityBuy.AutoSize = true;
-            this.lbQuantityBuy.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbQuantityBuy.Location = new System.Drawing.Point(24, 168);
-            this.lbQuantityBuy.Name = "lbQuantityBuy";
-            this.lbQuantityBuy.Size = new System.Drawing.Size(98, 19);
-            this.lbQuantityBuy.TabIndex = 0;
-            this.lbQuantityBuy.Text = "Quantity Buy";
+            this.lbTotal.AutoSize = true;
+            this.lbTotal.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbTotal.Location = new System.Drawing.Point(24, 168);
+            this.lbTotal.Name = "lbTotal";
+            this.lbTotal.Size = new System.Drawing.Size(43, 19);
+            this.lbTotal.TabIndex = 0;
+            this.lbTotal.Text = "Total";
             // 
             // txtShippedDate
             // 
@@ -236,35 +267,25 @@ namespace SalesWinApp
             this.txtRequiredDate.TabIndex = 4;
             this.txtRequiredDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtDiscount
+            // txtTotal
             // 
-            this.txtDiscount.Enabled = false;
-            this.txtDiscount.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtDiscount.Location = new System.Drawing.Point(550, 168);
-            this.txtDiscount.Name = "txtDiscount";
-            this.txtDiscount.Size = new System.Drawing.Size(105, 25);
-            this.txtDiscount.TabIndex = 3;
-            this.txtDiscount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtTotal.Location = new System.Drawing.Point(126, 167);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(142, 25);
+            this.txtTotal.TabIndex = 3;
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // txtQuantityBuy
+            // txtFreight
             // 
-            this.txtQuantityBuy.Enabled = false;
-            this.txtQuantityBuy.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtQuantityBuy.Location = new System.Drawing.Point(126, 167);
-            this.txtQuantityBuy.Name = "txtQuantityBuy";
-            this.txtQuantityBuy.Size = new System.Drawing.Size(142, 25);
-            this.txtQuantityBuy.TabIndex = 3;
-            this.txtQuantityBuy.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtUnitPrice
-            // 
-            this.txtUnitPrice.Enabled = false;
-            this.txtUnitPrice.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtUnitPrice.Location = new System.Drawing.Point(126, 117);
-            this.txtUnitPrice.Name = "txtUnitPrice";
-            this.txtUnitPrice.Size = new System.Drawing.Size(142, 25);
-            this.txtUnitPrice.TabIndex = 3;
-            this.txtUnitPrice.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFreight.Enabled = false;
+            this.txtFreight.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtFreight.Location = new System.Drawing.Point(126, 117);
+            this.txtFreight.Name = "txtFreight";
+            this.txtFreight.Size = new System.Drawing.Size(142, 25);
+            this.txtFreight.TabIndex = 3;
+            this.txtFreight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbRequiredDate
             // 
@@ -276,15 +297,15 @@ namespace SalesWinApp
             this.lbRequiredDate.TabIndex = 0;
             this.lbRequiredDate.Text = "Required Date";
             // 
-            // lbUnitPrice
+            // lbFreight
             // 
-            this.lbUnitPrice.AutoSize = true;
-            this.lbUnitPrice.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbUnitPrice.Location = new System.Drawing.Point(24, 118);
-            this.lbUnitPrice.Name = "lbUnitPrice";
-            this.lbUnitPrice.Size = new System.Drawing.Size(75, 19);
-            this.lbUnitPrice.TabIndex = 0;
-            this.lbUnitPrice.Text = "Unit Price";
+            this.lbFreight.AutoSize = true;
+            this.lbFreight.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbFreight.Location = new System.Drawing.Point(24, 118);
+            this.lbFreight.Name = "lbFreight";
+            this.lbFreight.Size = new System.Drawing.Size(57, 19);
+            this.lbFreight.TabIndex = 0;
+            this.lbFreight.Text = "Freight";
             // 
             // txtOrderDate
             // 
@@ -328,26 +349,26 @@ namespace SalesWinApp
             this.lbOrderID.TabIndex = 0;
             this.lbOrderID.Text = "Order ID";
             // 
-            // txtProID
+            // txtMemID
             // 
-            this.txtProID.Enabled = false;
-            this.txtProID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtProID.Location = new System.Drawing.Point(126, 68);
-            this.txtProID.Name = "txtProID";
-            this.txtProID.ReadOnly = true;
-            this.txtProID.Size = new System.Drawing.Size(142, 25);
-            this.txtProID.TabIndex = 1;
-            this.txtProID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtMemID.Enabled = false;
+            this.txtMemID.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.txtMemID.Location = new System.Drawing.Point(126, 68);
+            this.txtMemID.Name = "txtMemID";
+            this.txtMemID.ReadOnly = true;
+            this.txtMemID.Size = new System.Drawing.Size(142, 25);
+            this.txtMemID.TabIndex = 1;
+            this.txtMemID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // lbProductID
+            // lbMemberID
             // 
-            this.lbProductID.AutoSize = true;
-            this.lbProductID.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbProductID.Location = new System.Drawing.Point(24, 69);
-            this.lbProductID.Name = "lbProductID";
-            this.lbProductID.Size = new System.Drawing.Size(82, 19);
-            this.lbProductID.TabIndex = 0;
-            this.lbProductID.Text = "Product ID";
+            this.lbMemberID.AutoSize = true;
+            this.lbMemberID.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbMemberID.Location = new System.Drawing.Point(24, 69);
+            this.lbMemberID.Name = "lbMemberID";
+            this.lbMemberID.Size = new System.Drawing.Size(89, 19);
+            this.lbMemberID.TabIndex = 0;
+            this.lbMemberID.Text = "Member ID";
             // 
             // btnStatistic
             // 
@@ -405,6 +426,7 @@ namespace SalesWinApp
             this.txtTotalStatistic.Name = "txtTotalStatistic";
             this.txtTotalStatistic.Size = new System.Drawing.Size(145, 25);
             this.txtTotalStatistic.TabIndex = 22;
+            this.txtTotalStatistic.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbStart
             // 
@@ -441,62 +463,6 @@ namespace SalesWinApp
             this.txtEnd.Name = "txtEnd";
             this.txtEnd.Size = new System.Drawing.Size(79, 25);
             this.txtEnd.TabIndex = 3;
-            // 
-            // Column8
-            // 
-            this.Column8.DataPropertyName = "OrderID";
-            this.Column8.HeaderText = "Order ID";
-            this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // Column4
-            // 
-            this.Column4.DataPropertyName = "ProductID";
-            this.Column4.HeaderText = "Product ID";
-            this.Column4.Name = "Column4";
-            this.Column4.ReadOnly = true;
-            // 
-            // Column5
-            // 
-            this.Column5.DataPropertyName = "UnitPrice";
-            this.Column5.HeaderText = "Unit Price";
-            this.Column5.Name = "Column5";
-            this.Column5.ReadOnly = true;
-            // 
-            // Column6
-            // 
-            this.Column6.DataPropertyName = "QuantityBuy";
-            this.Column6.HeaderText = "Quantity Buy";
-            this.Column6.Name = "Column6";
-            this.Column6.ReadOnly = true;
-            // 
-            // Column7
-            // 
-            this.Column7.DataPropertyName = "Discount";
-            this.Column7.HeaderText = "Discount";
-            this.Column7.Name = "Column7";
-            this.Column7.ReadOnly = true;
-            // 
-            // Column1
-            // 
-            this.Column1.DataPropertyName = "OrderDate";
-            this.Column1.HeaderText = "Order Date";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "RequiredDate";
-            this.Column2.HeaderText = "Required Date";
-            this.Column2.Name = "Column2";
-            this.Column2.ReadOnly = true;
-            // 
-            // Column3
-            // 
-            this.Column3.DataPropertyName = "ShippedDate";
-            this.Column3.HeaderText = "Shipped Date";
-            this.Column3.Name = "Column3";
-            this.Column3.ReadOnly = true;
             // 
             // frmOrderManagement
             // 
@@ -545,15 +511,15 @@ namespace SalesWinApp
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbShippedDate;
-        private System.Windows.Forms.Label lbQuantityBuy;
+        private System.Windows.Forms.Label lbTotal;
         private System.Windows.Forms.TextBox txtRequiredDate;
-        private System.Windows.Forms.TextBox txtUnitPrice;
+        private System.Windows.Forms.TextBox txtFreight;
         private System.Windows.Forms.Label lbRequiredDate;
-        private System.Windows.Forms.Label lbUnitPrice;
+        private System.Windows.Forms.Label lbFreight;
         private System.Windows.Forms.TextBox txtOrderDate;
         private System.Windows.Forms.Label lbOrderDate;
-        private System.Windows.Forms.TextBox txtProID;
-        private System.Windows.Forms.Label lbProductID;
+        private System.Windows.Forms.TextBox txtMemID;
+        private System.Windows.Forms.Label lbMemberID;
         private System.Windows.Forms.Button btnStatistic;
         private System.Windows.Forms.Button btnAscSort;
         private System.Windows.Forms.Label lbFStore;
@@ -561,21 +527,18 @@ namespace SalesWinApp
         private TextBox txtTotalStatistic;
         private Label lbStart;
         private Label lbEnd;
-        private Label lbDiscount;
         private TextBox txtShippedDate;
-        private TextBox txtDiscount;
-        private TextBox txtQuantityBuy;
+        private TextBox txtTotal;
         private TextBox txtStart;
         private TextBox txtEnd;
         private TextBox txtOrderID;
         private Label lbOrderID;
         private DataGridViewTextBoxColumn Column8;
         private DataGridViewTextBoxColumn Column4;
-        private DataGridViewTextBoxColumn Column5;
-        private DataGridViewTextBoxColumn Column6;
-        private DataGridViewTextBoxColumn Column7;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column5;
+        private DataGridViewTextBoxColumn Column6;
     }
 }

@@ -15,7 +15,11 @@ namespace DataAccess.Repository
         public void DeleteOrder(int id);
         public void UpdateOrder(OrderObject order);
         public int GetCountingOrders();
-
+        public List<OrderHistoryObject> GetOrderHistoryList();
+        public List<OrderHistoryObject> GetOrderByMemberID(int memberID);
+        public List<OrderHistoryObject> SortByDateAscending();
+        public List<OrderHistoryObject> SortByDateDescending();
+        public double StatisticMoney(int startDate, int endDate);
 
     }
 }

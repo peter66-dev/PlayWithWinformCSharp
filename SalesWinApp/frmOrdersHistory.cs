@@ -14,17 +14,17 @@ namespace SalesWinApp
 {
     public partial class frmOrdersHistory : Form
     {
-        public IOrderHistoryRepository OrderRepository { get; set; }
+        public IOrderRepository orderRepository { get; set; }
         public MemberObject MemberInfo { get; set; }
         BindingSource source = new BindingSource();
         public frmOrdersHistory()
         {
             InitializeComponent();
-            OrderRepository = new OrderHistoryRepository();
+            orderRepository = new OrderRepository();
         }
         private void frmOrdersHistory_Load(object sender, EventArgs e)
         {
-            LoadOrderHistoryList(OrderRepository.GetOrdersHistory(MemberInfo.MemberID));
+            LoadOrderHistoryList(orderRepository.GetOrderByMemberID(MemberInfo.MemberID));
         }
         private void LoadOrderHistoryList(IEnumerable<OrderHistoryObject> list)
         {

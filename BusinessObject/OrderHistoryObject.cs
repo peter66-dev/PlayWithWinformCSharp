@@ -6,39 +6,18 @@ using System.Threading.Tasks;
 
 namespace BusinessObject
 {
-    public class OrderHistoryObject
+    public class OrderHistoryObject : OrderObject
     {
-        public int OrderID { get; set; }
-        public int ProductID { get; set; }
-        public decimal UnitPrice { get; set; }
-        public int QuantityBuy { get; set; }
-        public double Discount { get; set; }
-        public DateTime OrderDate { get; set; }
-        public DateTime RequiredDate { get; set; }
-        public DateTime ShippedDate { get; set; }
+        public decimal Total { get; set; }
 
-        public OrderHistoryObject()
+        public OrderHistoryObject() : base()
         {
-            OrderID = 0;
-            ProductID = 0;
-            UnitPrice = 0;
-            QuantityBuy = 0;
-            Discount = 0;
-            OrderDate = new DateTime();
-            RequiredDate = new DateTime();
-            ShippedDate = new DateTime();
+            Total = 0;
         }
 
-        public OrderHistoryObject(DateTime order, DateTime required, DateTime shipped, int orderid, int proID, decimal price, int quantity, float discount)
+        public OrderHistoryObject(decimal total, int oId, int mID, DateTime oDate, DateTime rDate, DateTime sDate, decimal freight) : base(oId, mID, oDate, rDate, sDate, freight)
         {
-            OrderDate = order;
-            RequiredDate = required;
-            ShippedDate = shipped;
-            ProductID = proID;
-            OrderID = orderid;
-            UnitPrice = price;
-            QuantityBuy = quantity;
-            Discount = discount;
+            Total = total;
         }
     }
 }

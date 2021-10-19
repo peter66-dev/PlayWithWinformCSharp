@@ -187,6 +187,42 @@ namespace DataAccess
             return order;
         }
 
+        public List<OrderHistoryObject> GetOrderByMemberID(int memberID)
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("Select OrderID, OrderDate, RequiredDate, ShippedDate, Freight from [Order] where MemberID = @MemberID", connection);
+            command.Parameters.AddWithValue("@MemberID", memberID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    if (reader.Read())
+                    {
+                        OrderHistoryObject order = new OrderHistoryObject();
+                        order.OrderID = reader.GetInt32("OrderID");
+                        order.MemberID = memberID;
+                        order.OrderDate = reader.GetDateTime("OrderDate");
+                        order.RequiredDate = reader.GetDateTime("RequiredDate");
+                        order.ShippedDate = reader.GetDateTime("ShippedDate");
+                        order.Freight = reader.GetDecimal("Freight");
+                        order.Total = GetTotalMoneyOrderByOrderID(reader.GetInt32("OrderID"));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
         public int GetCountingOrders()
         {
             int count = 0;
@@ -215,6 +251,184 @@ namespace DataAccess
             return count;
         }
 
+        // -----------------------------------------      Order Management  ----------------------------------------- 
+        public decimal GetTotalMoneyOrderByOrderID(int orderID)
+        {
+            decimal total = 0;
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select UnitPrice, Quantity, Discount from [OrderDetail] where OrderId = @OrderId", connection);
+            command.Parameters.AddWithValue("@OrderId", orderID);
+            try
+            {
+                connection.Open();
+                SqlDataReader rs = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (rs.HasRows)
+                {
+                    while (rs.Read())
+                    {
+                        decimal unitPrice = rs.GetDecimal("UnitPrice");
+                        int quantity = rs.GetInt32("Quantity");
+                        double discount = rs.GetDouble("Discount");// bug here
+                        total += (unitPrice * quantity * (decimal)(1 - discount));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return total;
+        }
 
+        public List<OrderHistoryObject> GetOrderHistoryList()
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight from [Order]", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        OrderHistoryObject ord = new OrderHistoryObject()
+                        {
+                            OrderID = reader.GetInt32("OrderID"),
+                            MemberID = reader.GetInt32("MemberID"),
+                            OrderDate = reader.GetDateTime("OrderDate"),
+                            RequiredDate = reader.GetDateTime("RequiredDate"),
+                            ShippedDate = reader.GetDateTime("ShippedDate"),
+                            Freight = reader.GetDecimal("Freight"),
+                            Total = Math.Round(GetTotalMoneyOrderByOrderID(reader.GetInt32("OrderID")), 2)
+                        };
+                        list.Add(ord);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
+        public List<OrderHistoryObject> SortByDateAscending()
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight " +
+                "from [Order] Order By OrderDate asc", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        OrderHistoryObject ord = new OrderHistoryObject()
+                        {
+                            OrderID = reader.GetInt32("OrderID"),
+                            MemberID = reader.GetInt32("MemberID"),
+                            OrderDate = reader.GetDateTime("OrderDate"),
+                            RequiredDate = reader.GetDateTime("RequiredDate"),
+                            ShippedDate = reader.GetDateTime("ShippedDate"),
+                            Freight = reader.GetDecimal("Freight"),
+                            Total = Math.Round(GetTotalMoneyOrderByOrderID(reader.GetInt32("OrderID")), 2)
+                        };
+                        list.Add(ord);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
+        public List<OrderHistoryObject> SortByDateDescending()
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select OrderID, MemberID, OrderDate, RequiredDate, ShippedDate, Freight " +
+                "from [Order] Order By OrderDate desc", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        OrderHistoryObject ord = new OrderHistoryObject()
+                        {
+                            OrderID = reader.GetInt32("OrderID"),
+                            MemberID = reader.GetInt32("MemberID"),
+                            OrderDate = reader.GetDateTime("OrderDate"),
+                            RequiredDate = reader.GetDateTime("RequiredDate"),
+                            ShippedDate = reader.GetDateTime("ShippedDate"),
+                            Freight = reader.GetDecimal("Freight"),
+                            Total = Math.Round(GetTotalMoneyOrderByOrderID(reader.GetInt32("OrderID")), 2)
+                        };
+                        list.Add(ord);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
+        public double StatisticMoney(int startDate, int endDate)
+        {
+            double total = 0;
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select SUM((1-discount) * quantity * unitprice) as TOTAL " +
+                "from[OrderDetail] where OrderId in (select OrderId from[Order] where DATEPART(day, OrderDate) between @StartDate and @EndDate)", connection);
+            command.Parameters.AddWithValue("@StartDate", startDate);
+            command.Parameters.AddWithValue("@EndDate", endDate);
+            try
+            {
+                connection.Open();
+                SqlDataReader rs = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (rs.HasRows)
+                {
+                    if (rs.Read())
+                    {
+                        total = rs.GetDouble(0);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return total;
+        }
     }
 }
