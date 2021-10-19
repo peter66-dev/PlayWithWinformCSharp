@@ -51,16 +51,20 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader rs = command.ExecuteReader(CommandBehavior.CloseConnection);
-                while (rs.Read()) {
-                    OrderDetailObject o = new OrderDetailObject()
+                if (rs.HasRows)
+                {
+                    while (rs.Read())
                     {
-                        OrderID = rs.GetInt32("OrderID"),
-                        ProductID = rs.GetInt32("ProductID"),
-                        UnitPrice = rs.GetDecimal("UnitPrice"),
-                        Quantity = rs.GetInt32("Quantity"),
-                        Discount = rs.GetDouble("Discount"),
-                    };
-                    list.Add(o);
+                        OrderDetailObject o = new OrderDetailObject()
+                        {
+                            OrderID = rs.GetInt32("OrderID"),
+                            ProductID = rs.GetInt32("ProductID"),
+                            UnitPrice = rs.GetDecimal("UnitPrice"),
+                            Quantity = rs.GetInt32("Quantity"),
+                            Discount = rs.GetDouble("Discount"),
+                        };
+                        list.Add(o);
+                    }
                 }
             }
             catch(Exception ex)

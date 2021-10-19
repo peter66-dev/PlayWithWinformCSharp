@@ -52,18 +52,21 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    OrderObject ord = new OrderObject()
+                    while (reader.Read())
                     {
-                        OrderID = reader.GetInt32("OrderID"),
-                        MemberID = reader.GetInt32("MemberID"),
-                        OrderDate = reader.GetDateTime("OrderDate"),
-                        RequiredDate = reader.GetDateTime("RequiredDate"),
-                        ShippedDate = reader.GetDateTime("ShippedDate"),
-                        Freight = reader.GetDecimal("Freight")
-                    };
-                    list.Add(ord);
+                        OrderObject ord = new OrderObject()
+                        {
+                            OrderID = reader.GetInt32("OrderID"),
+                            MemberID = reader.GetInt32("MemberID"),
+                            OrderDate = reader.GetDateTime("OrderDate"),
+                            RequiredDate = reader.GetDateTime("RequiredDate"),
+                            ShippedDate = reader.GetDateTime("ShippedDate"),
+                            Freight = reader.GetDecimal("Freight")
+                        };
+                        list.Add(ord);
+                    }
                 }
             }
             catch (Exception ex)
@@ -156,14 +159,17 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    order.OrderID = id;
-                    order.MemberID = reader.GetInt32("MemberID");
-                    order.OrderDate = reader.GetDateTime("OrderDate");
-                    order.RequiredDate = reader.GetDateTime("RequiredDate");
-                    order.ShippedDate = reader.GetDateTime("ShippedDate");
-                    order.Freight = reader.GetDecimal("Freight");
+                    if (reader.Read())
+                    {
+                        order.OrderID = id;
+                        order.MemberID = reader.GetInt32("MemberID");
+                        order.OrderDate = reader.GetDateTime("OrderDate");
+                        order.RequiredDate = reader.GetDateTime("RequiredDate");
+                        order.ShippedDate = reader.GetDateTime("ShippedDate");
+                        order.Freight = reader.GetDecimal("Freight");
+                    }
                 }
                 else
                 {
@@ -190,9 +196,12 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    count = reader.GetInt32("Total");
+                    if (reader.Read())
+                    {
+                        count = reader.GetInt32("Total");
+                    }
                 }
             }
             catch (Exception ex)

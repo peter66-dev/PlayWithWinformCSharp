@@ -56,14 +56,17 @@ namespace DataAccess.Repository
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    mem.MemberID = id;
-                    mem.Email = reader.GetString("Email").Trim();
-                    mem.CompanyName = reader.GetString("CompanyName").Trim();
-                    mem.City = reader.GetString("City").Trim();
-                    mem.Country = reader.GetString("Country").Trim();
-                    mem.Password = reader.GetString("Password").Trim();
+                    if (reader.Read())
+                    {
+                        mem.MemberID = id;
+                        mem.Email = reader.GetString("Email").Trim();
+                        mem.CompanyName = reader.GetString("CompanyName").Trim();
+                        mem.City = reader.GetString("City").Trim();
+                        mem.Country = reader.GetString("Country").Trim();
+                        mem.Password = reader.GetString("Password").Trim();
+                    }
                 }
             }
             catch (Exception ex)
@@ -87,14 +90,17 @@ namespace DataAccess.Repository
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    mem.MemberID = reader.GetInt32("MemberID");
-                    mem.Email = reader.GetString("Email").Trim();
-                    mem.CompanyName = reader.GetString("CompanyName").Trim();
-                    mem.City = reader.GetString("City").Trim();
-                    mem.Country = reader.GetString("Country").Trim();
-                    mem.Password = reader.GetString("Password").Trim();
+                    if (reader.Read())
+                    {
+                        mem.MemberID = reader.GetInt32("MemberID");
+                        mem.Email = reader.GetString("Email").Trim();
+                        mem.CompanyName = reader.GetString("CompanyName").Trim();
+                        mem.City = reader.GetString("City").Trim();
+                        mem.Country = reader.GetString("Country").Trim();
+                        mem.Password = reader.GetString("Password").Trim();
+                    }
                 }
             }
             catch (Exception ex)
@@ -157,14 +163,17 @@ namespace DataAccess.Repository
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    mem.MemberID = reader.GetInt32("MemberID");
-                    mem.Email = reader.GetString("Email").Trim();
-                    mem.CompanyName = reader.GetString("CompanyName").Trim();
-                    mem.City = reader.GetString("City").Trim();
-                    mem.Country = reader.GetString("Country").Trim();
-                    mem.Password = reader.GetString("Password").Trim();
+                    if (reader.Read())
+                    {
+                        mem.MemberID = reader.GetInt32("MemberID");
+                        mem.Email = reader.GetString("Email").Trim();
+                        mem.CompanyName = reader.GetString("CompanyName").Trim();
+                        mem.City = reader.GetString("City").Trim();
+                        mem.Country = reader.GetString("Country").Trim();
+                        mem.Password = reader.GetString("Password").Trim();
+                    }
                 }
             }
             catch (Exception ex)
@@ -190,16 +199,19 @@ namespace DataAccess.Repository
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    MemberObject mem = new MemberObject();
-                    mem.MemberID = id;
-                    mem.Email = email;
-                    mem.CompanyName = reader.GetString("CompanyName").Trim();
-                    mem.City = reader.GetString("City").Trim();
-                    mem.Country = reader.GetString("Country").Trim();
-                    mem.Password = reader.GetString("Password").Trim();
-                    list.Add(mem);
+                    while (reader.Read())
+                    {
+                        MemberObject mem = new MemberObject();
+                        mem.MemberID = id;
+                        mem.Email = email;
+                        mem.CompanyName = reader.GetString("CompanyName").Trim();
+                        mem.City = reader.GetString("City").Trim();
+                        mem.Country = reader.GetString("Country").Trim();
+                        mem.Password = reader.GetString("Password").Trim();
+                        list.Add(mem);
+                    }
                 }
             }
             catch (Exception ex)

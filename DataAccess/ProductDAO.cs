@@ -53,18 +53,21 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    ProductObject pro = new ProductObject()
+                    while (reader.Read())
                     {
-                        ProductID = reader.GetInt32("ProductID"),
-                        CategoryID = reader.GetInt32("CategoryID"),
-                        ProductName = reader.GetString("ProductName"),
-                        Weight = reader.GetString("Weight"),
-                        UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2),
-                        UnitsInStock = reader.GetInt32("UnitsInStock"),
-                    };
-                    list.Add(pro);
+                        ProductObject pro = new ProductObject()
+                        {
+                            ProductID = reader.GetInt32("ProductID"),
+                            CategoryID = reader.GetInt32("CategoryID"),
+                            ProductName = reader.GetString("ProductName"),
+                            Weight = reader.GetString("Weight"),
+                            UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2),
+                            UnitsInStock = reader.GetInt32("UnitsInStock"),
+                        };
+                        list.Add(pro);
+                    }
                 }
             }
             catch (Exception ex)
@@ -162,14 +165,17 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    pro.ProductID = id;
-                    pro.CategoryID = reader.GetInt32("CategoryID");
-                    pro.ProductName = reader.GetString("ProductName");
-                    pro.Weight = reader.GetString("Weight");
-                    pro.UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2);
-                    pro.UnitsInStock = reader.GetInt32("UnitsInStock");
+                    if (reader.Read())
+                    {
+                        pro.ProductID = id;
+                        pro.CategoryID = reader.GetInt32("CategoryID");
+                        pro.ProductName = reader.GetString("ProductName");
+                        pro.Weight = reader.GetString("Weight");
+                        pro.UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2);
+                        pro.UnitsInStock = reader.GetInt32("UnitsInStock");
+                    }
                 }
             }
             catch (Exception ex)
@@ -194,18 +200,21 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                while (reader.Read())
+                if (reader.HasRows)
                 {
-                    ProductObject pro = new ProductObject()
+                    while (reader.Read())
                     {
-                        ProductID = reader.GetInt32("ProductID"),
-                        CategoryID = reader.GetInt32("CategoryID"),
-                        ProductName = reader.GetString("ProductName"),
-                        Weight = reader.GetString("Weight"),
-                        UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2),
-                        UnitsInStock = reader.GetInt32("UnitsInStock"),
-                    };
-                    list.Add(pro);
+                        ProductObject pro = new ProductObject()
+                        {
+                            ProductID = reader.GetInt32("ProductID"),
+                            CategoryID = reader.GetInt32("CategoryID"),
+                            ProductName = reader.GetString("ProductName"),
+                            Weight = reader.GetString("Weight"),
+                            UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2),
+                            UnitsInStock = reader.GetInt32("UnitsInStock"),
+                        };
+                        list.Add(pro);
+                    }
                 }
             }
             catch (Exception ex)
@@ -230,14 +239,17 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    pro.ProductID = id;
-                    pro.CategoryID = reader.GetInt32("CategoryID");
-                    pro.ProductName = reader.GetString("ProductName");
-                    pro.Weight = reader.GetString("Weight");
-                    pro.UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2);
-                    pro.UnitsInStock = reader.GetInt32("UnitsInStock");
+                    if (reader.Read())
+                    {
+                        pro.ProductID = id;
+                        pro.CategoryID = reader.GetInt32("CategoryID");
+                        pro.ProductName = reader.GetString("ProductName");
+                        pro.Weight = reader.GetString("Weight");
+                        pro.UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2);
+                        pro.UnitsInStock = reader.GetInt32("UnitsInStock");
+                    }
                 }
             }
             catch (Exception ex)
@@ -275,9 +287,12 @@ namespace DataAccess
             {
                 connection.Open();
                 SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
-                if (reader.Read())
+                if (reader.HasRows)
                 {
-                    quantity = reader.GetInt32("UnitsInStock");
+                    if (reader.Read())
+                    {
+                        quantity = reader.GetInt32("UnitsInStock");
+                    }
                 }
             }
             catch (Exception ex)
