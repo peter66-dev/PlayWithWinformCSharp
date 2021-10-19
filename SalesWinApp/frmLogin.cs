@@ -107,7 +107,7 @@ namespace SalesWinApp
                     MemberObject admin = ReadFileJSon();
                     if (admin.Email.Equals(emailLogin) && admin.Password.Equals(pswLogin))//vô với role admin
                     {
-                        frmMembers frm = new frmMembers();
+                        frmMain frm = new frmMain();
                         frm.Show();
                     }
                     else

@@ -143,7 +143,7 @@ namespace SalesWinApp
                         };
                         MemberRepository.UpdateMember(mem);
                         MessageBox.Show("Updating a new member successfully!\n" +
-                            "Click Load button to see the new information", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            "Click Load button to see the new information", "Message", MessageBoxButtons.OK);
                         Close();
                     }
                     else // false > insert
@@ -158,7 +158,7 @@ namespace SalesWinApp
                         };
                         MemberRepository.InsertMember(mem);
                         MessageBox.Show("Adding a new member successfully!\n" +
-                            "Click Load button to see the new information", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            "Click Load button to see the new information", "Message", MessageBoxButtons.OK);
                         Close();
                     }
                 }

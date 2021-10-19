@@ -269,9 +269,9 @@ namespace SalesWinApp
             if (CheckFormCalculation())
             {
                 int memID = int.Parse(txtMemberID.Text);
-                int countingOrders = orderRepository.GetCountingOrders(); // có khóa là int KHÔNG TỰ TĂNG nên phải đếm số lượng rồi +1 làm khóa
+                int countingOrders = 5 + orderRepository.GetCountingOrders(); // có khóa là int KHÔNG TỰ TĂNG nên phải đếm số lượng rồi +5 làm khóa
                 decimal freight = Math.Round(decimal.Parse(txtFreight.Text), 2);
-                orderRepository.InsertOrder(++countingOrders, memID, freight); // freight là phí ship!
+                orderRepository.InsertOrder(countingOrders, memID, freight); // freight là phí ship!
                 bool check = false;
                 //add new order details
                 foreach (var pro in cart)

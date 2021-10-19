@@ -47,7 +47,7 @@ namespace DataAccess
         {
             List<OrderHistoryObject> list = new List<OrderHistoryObject>();
             connection = new SqlConnection(GetConnectionString());
-            command = new SqlCommand("select o.OrderDate, o.ShippedDate, o.RequiredDate, d.ProductId, d.UnitPrice, d.Quantity, d.Discount " +
+            command = new SqlCommand("select o.OrderDate, o.ShippedDate, o.RequiredDate, d.OrderID, d.ProductId, d.UnitPrice, d.Quantity, d.Discount " +
                 "from tblOrder o left join tblOrderDetail d on d.OrderID = o.OrderID where o.OrderID in " +
                 "(select OrderID from tblOrder where MemberID = @MemberID)", connection);
             command.Parameters.AddWithValue("@MemberID", memberID);
@@ -63,6 +63,7 @@ namespace DataAccess
                         RequiredDate = rs.GetDateTime("RequiredDate"),
                         ShippedDate = rs.GetDateTime("ShippedDate"),
                         ProductID = rs.GetInt32("ProductID"),
+                        OrderID = rs.GetInt32("OrderID"),
                         UnitPrice = rs.GetDecimal("UnitPrice"),
                         QuantityBuy = rs.GetInt32("Quantity"),
                         Discount = rs.GetDouble("Discount")
@@ -78,6 +79,135 @@ namespace DataAccess
                 connection.Close();
             }
             return list;
+        }
+
+        public List<OrderHistoryObject> GetOrdersHistory()
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select o.OrderDate, o.ShippedDate, o.RequiredDate, d.ProductId, d.OrderID, d.UnitPrice, d.Quantity, d.Discount " +
+                "from tblOrder o left join tblOrderDetail d on d.OrderID = o.OrderID", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader rs = command.ExecuteReader(CommandBehavior.CloseConnection);
+                while (rs.Read())
+                {
+                    OrderHistoryObject o = new OrderHistoryObject()
+                    {
+                        OrderDate = rs.GetDateTime("OrderDate"),
+                        RequiredDate = rs.GetDateTime("RequiredDate"),
+                        ShippedDate = rs.GetDateTime("ShippedDate"),
+                        ProductID = rs.GetInt32("ProductID"),
+                        OrderID = rs.GetInt32("OrderID"),
+                        UnitPrice = rs.GetDecimal("UnitPrice"),
+                        QuantityBuy = rs.GetInt32("Quantity"),
+                        Discount = rs.GetDouble("Discount")
+                    };
+                    list.Add(o);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+        public List<OrderHistoryObject> SortOrdersHistoryAscending()
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select o.OrderDate, o.ShippedDate, o.RequiredDate, d.ProductId, d.OrderID, d.UnitPrice, d.Quantity, d.Discount " +
+                "from tblOrder o left join tblOrderDetail d on d.OrderID = o.OrderID order by OrderDate asc", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader rs = command.ExecuteReader(CommandBehavior.CloseConnection);
+                while (rs.Read())
+                {
+                    OrderHistoryObject o = new OrderHistoryObject()
+                    {
+                        OrderDate = rs.GetDateTime("OrderDate"),
+                        RequiredDate = rs.GetDateTime("RequiredDate"),
+                        ShippedDate = rs.GetDateTime("ShippedDate"),
+                        ProductID = rs.GetInt32("ProductID"),
+                        OrderID = rs.GetInt32("OrderID"),
+                        UnitPrice = rs.GetDecimal("UnitPrice"),
+                        QuantityBuy = rs.GetInt32("Quantity"),
+                        Discount = rs.GetDouble("Discount")
+                    };
+                    list.Add(o);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+        public List<OrderHistoryObject> SortOrdersHistoryDescending()
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select o.OrderDate, o.ShippedDate, o.RequiredDate, d.ProductId, d.OrderID, d.UnitPrice, d.Quantity, d.Discount " +
+                "from tblOrder o left join tblOrderDetail d on d.OrderID = o.OrderID order by OrderDate desc", connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader rs = command.ExecuteReader(CommandBehavior.CloseConnection);
+                while (rs.Read())
+                {
+                    OrderHistoryObject o = new OrderHistoryObject()
+                    {
+                        OrderDate = rs.GetDateTime("OrderDate"),
+                        RequiredDate = rs.GetDateTime("RequiredDate"),
+                        ShippedDate = rs.GetDateTime("ShippedDate"),
+                        ProductID = rs.GetInt32("ProductID"),
+                        OrderID = rs.GetInt32("OrderID"),
+                        UnitPrice = rs.GetDecimal("UnitPrice"),
+                        QuantityBuy = rs.GetInt32("Quantity"),
+                        Discount = rs.GetDouble("Discount")
+                    };
+                    list.Add(o);
+                }
+            }
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return list;
+        }
+
+        public void DeleteOrderHistory(int orderid, int productID)
+        {
+            List<OrderHistoryObject> list = new List<OrderHistoryObject>();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("delete tblOrderDetail where OrderId = @OrderId and ProductId = @ProductId", connection);
+            command.Parameters.AddWithValue("@OrderId", orderid);
+            command.Parameters.AddWithValue("@ProductId", productID);
+            try
+            {
+                connection.Open();
+                command.ExecuteNonQuery();
+                
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
         }
     }
 }

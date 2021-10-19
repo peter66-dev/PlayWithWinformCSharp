@@ -10,5 +10,9 @@ namespace DataAccess.Repository
     public interface IOrderHistoryRepository
     {
         public List<OrderHistoryObject> GetOrdersHistory(int memberID);
+        public List<OrderHistoryObject> GetOrdersHistory();
+        public List<OrderHistoryObject> SortOrdersHistoryDescending();
+        public List<OrderHistoryObject> SortOrdersHistoryAscending();
+        public void DeleteOrderHistory(int orderid, int productID);
     }
 }
