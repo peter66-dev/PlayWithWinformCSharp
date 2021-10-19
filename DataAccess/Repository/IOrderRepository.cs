@@ -17,9 +17,11 @@ namespace DataAccess.Repository
         public int GetCountingOrders();
         public List<OrderHistoryObject> GetOrderHistoryList();
         public List<OrderHistoryObject> GetOrderByMemberID(int memberID);
-        public List<OrderHistoryObject> SortByDateAscending();
-        public List<OrderHistoryObject> SortByDateDescending();
+        public List<OrderHistoryObject> SortByTotalAscending();
+        public List<OrderHistoryObject> SortByTotalDescending();
         public double StatisticMoney(int startDate, int endDate);
+        public void UpdateFreightByOrderID(int orderID, decimal freight);
+        public List<OrderHistoryObject> GetOrderHistoryList(int start, int end);
 
     }
 }

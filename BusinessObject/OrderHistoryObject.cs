@@ -8,14 +8,14 @@ namespace BusinessObject
 {
     public class OrderHistoryObject : OrderObject
     {
-        public decimal Total { get; set; }
+        public double Total { get; set; }
 
         public OrderHistoryObject() : base()
         {
             Total = 0;
         }
 
-        public OrderHistoryObject(decimal total, int oId, int mID, DateTime oDate, DateTime rDate, DateTime sDate, decimal freight) : base(oId, mID, oDate, rDate, sDate, freight)
+        public OrderHistoryObject(double total, int oId, int mID, DateTime oDate, DateTime rDate, DateTime sDate, decimal freight) : base(oId, mID, oDate, rDate, sDate, freight)
         {
             Total = total;
         }

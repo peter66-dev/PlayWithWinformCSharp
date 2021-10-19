@@ -97,14 +97,14 @@ namespace SalesWinApp
                     ProductObject pro = new ProductObject(proID, categoryID, productName, weight, unitPrice, unitsInStock);
                     ProductRepository.UpdateProduct(pro);
                     MessageBox.Show("Updating a new product successfully!\nClick Load button to see the new information",
-                                                            "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                            "Message", MessageBoxButtons.OK);
                     Close();
                 }
                 else //INSERT
                 {
                     ProductRepository.InsertProduct(categoryID, productName, weight, unitPrice, unitsInStock);
                     MessageBox.Show("Adding a new member successfully!\nClick Load button to see the new information",
-                                                            "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                                            "Message", MessageBoxButtons.OK);
                     Close();
                 }
             }

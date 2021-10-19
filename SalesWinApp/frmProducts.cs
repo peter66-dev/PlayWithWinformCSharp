@@ -33,37 +33,6 @@ namespace SalesWinApp
         {
             try
             {
-                source.DataSource = list;
-                txtProID.DataBindings.Clear();
-                txtCateID.DataBindings.Clear();
-                txtProName.DataBindings.Clear();
-                txtWeight.DataBindings.Clear();
-                txtUnitPrice.DataBindings.Clear();
-                txtStocks.DataBindings.Clear();
-
-                txtProID.DataBindings.Add("Text", source, "ProductID");
-                txtCateID.DataBindings.Add("Text", source, "CategoryID");
-                txtProName.DataBindings.Add("Text", source, "ProductName");
-                txtWeight.DataBindings.Add("Text", source, "Weight");
-                txtUnitPrice.DataBindings.Add("Text", source, "UnitPrice");
-                txtStocks.DataBindings.Add("Text", source, "UnitsInStock");
-
-                dgvProductList.Columns["ProductID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["CategoryID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["ProductName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                dgvProductList.Columns["Weight"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["UnitPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                dgvProductList.Columns["UnitsInStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                dgvProductList.Columns["ProductID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["CategoryID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["ProductName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["Weight"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["UnitPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                dgvProductList.Columns["UnitsInStock"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                dgvProductList.DataSource = null;
-                dgvProductList.DataSource = source;
                 if (list.Count() == 0)
                 {
                     ClearText();
@@ -86,6 +55,46 @@ namespace SalesWinApp
                     btnAscSort.Enabled = true;
                     btnDescSort.Enabled = true;
                 }
+                source.DataSource = list;
+                txtProID.DataBindings.Clear();
+                txtCateID.DataBindings.Clear();
+                txtProName.DataBindings.Clear();
+                txtWeight.DataBindings.Clear();
+                txtUnitPrice.DataBindings.Clear();
+                txtStocks.DataBindings.Clear();
+
+                txtProID.DataBindings.Add("Text", source, "ProductID");
+                txtCateID.DataBindings.Add("Text", source, "CategoryID");
+                txtProName.DataBindings.Add("Text", source, "ProductName");
+                txtWeight.DataBindings.Add("Text", source, "Weight");
+                txtUnitPrice.DataBindings.Add("Text", source, "UnitPrice");
+                txtStocks.DataBindings.Add("Text", source, "UnitsInStock");
+
+                dgvProductList.DataSource = null;
+                dgvProductList.DataSource = source;
+
+                dgvProductList.Columns["ProductID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["CategoryID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["ProductName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvProductList.Columns["Weight"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["UnitPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                dgvProductList.Columns["UnitsInStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                dgvProductList.Columns["ProductID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["CategoryID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["ProductName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["Weight"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["UnitPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                dgvProductList.Columns["UnitsInStock"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                dgvProductList.Columns["ProductID"].ReadOnly = true;
+                dgvProductList.Columns["CategoryID"].ReadOnly = true;
+                dgvProductList.Columns["ProductName"].ReadOnly = true;
+                dgvProductList.Columns["Weight"].ReadOnly = true;
+                dgvProductList.Columns["UnitPrice"].ReadOnly = true;
+                dgvProductList.Columns["UnitsInStock"].ReadOnly = true;
+
+                
             }
             catch (Exception ex)
             {

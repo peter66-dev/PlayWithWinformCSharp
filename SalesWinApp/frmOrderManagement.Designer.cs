@@ -68,6 +68,7 @@ namespace SalesWinApp
             this.lbEnd = new System.Windows.Forms.Label();
             this.txtStart = new System.Windows.Forms.TextBox();
             this.txtEnd = new System.Windows.Forms.TextBox();
+            this.lbMoney = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOrderList)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -91,7 +92,7 @@ namespace SalesWinApp
             this.dgvOrderList.Name = "dgvOrderList";
             this.dgvOrderList.RowTemplate.Height = 25;
             this.dgvOrderList.Size = new System.Drawing.Size(1157, 246);
-            this.dgvOrderList.TabIndex = 1;
+            this.dgvOrderList.TabIndex = 999;
             // 
             // Column8
             // 
@@ -147,7 +148,7 @@ namespace SalesWinApp
             this.btnLoad.Location = new System.Drawing.Point(852, 69);
             this.btnLoad.Name = "btnLoad";
             this.btnLoad.Size = new System.Drawing.Size(86, 30);
-            this.btnLoad.TabIndex = 8;
+            this.btnLoad.TabIndex = 1;
             this.btnLoad.Text = "Load";
             this.btnLoad.UseVisualStyleBackColor = true;
             this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
@@ -159,7 +160,7 @@ namespace SalesWinApp
             this.btnAdd.Location = new System.Drawing.Point(852, 112);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(86, 30);
-            this.btnAdd.TabIndex = 9;
+            this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -171,7 +172,7 @@ namespace SalesWinApp
             this.btnUpdate.Location = new System.Drawing.Point(852, 157);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(86, 30);
-            this.btnUpdate.TabIndex = 10;
+            this.btnUpdate.TabIndex = 3;
             this.btnUpdate.Text = "Update";
             this.btnUpdate.UseVisualStyleBackColor = true;
             this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -183,7 +184,7 @@ namespace SalesWinApp
             this.btnDelete.Location = new System.Drawing.Point(852, 201);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(86, 30);
-            this.btnDelete.TabIndex = 11;
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
@@ -196,7 +197,7 @@ namespace SalesWinApp
             this.btnClose.Location = new System.Drawing.Point(549, 624);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(86, 28);
-            this.btnClose.TabIndex = 20;
+            this.btnClose.TabIndex = 11;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -223,7 +224,7 @@ namespace SalesWinApp
             this.panel1.Location = new System.Drawing.Point(15, 69);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(809, 208);
-            this.panel1.TabIndex = 2;
+            this.panel1.TabIndex = 444;
             // 
             // lbShippedDate
             // 
@@ -232,7 +233,7 @@ namespace SalesWinApp
             this.lbShippedDate.Location = new System.Drawing.Point(420, 118);
             this.lbShippedDate.Name = "lbShippedDate";
             this.lbShippedDate.Size = new System.Drawing.Size(99, 19);
-            this.lbShippedDate.TabIndex = 0;
+            this.lbShippedDate.TabIndex = 222;
             this.lbShippedDate.Text = "Shipped Date";
             // 
             // lbTotal
@@ -242,7 +243,7 @@ namespace SalesWinApp
             this.lbTotal.Location = new System.Drawing.Point(24, 168);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(43, 19);
-            this.lbTotal.TabIndex = 0;
+            this.lbTotal.TabIndex = 444;
             this.lbTotal.Text = "Total";
             // 
             // txtShippedDate
@@ -253,7 +254,7 @@ namespace SalesWinApp
             this.txtShippedDate.Name = "txtShippedDate";
             this.txtShippedDate.ReadOnly = true;
             this.txtShippedDate.Size = new System.Drawing.Size(165, 25);
-            this.txtShippedDate.TabIndex = 4;
+            this.txtShippedDate.TabIndex = 222;
             this.txtShippedDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtRequiredDate
@@ -264,7 +265,7 @@ namespace SalesWinApp
             this.txtRequiredDate.Name = "txtRequiredDate";
             this.txtRequiredDate.ReadOnly = true;
             this.txtRequiredDate.Size = new System.Drawing.Size(165, 25);
-            this.txtRequiredDate.TabIndex = 4;
+            this.txtRequiredDate.TabIndex = 222;
             this.txtRequiredDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotal
@@ -274,7 +275,7 @@ namespace SalesWinApp
             this.txtTotal.Location = new System.Drawing.Point(126, 167);
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.Size = new System.Drawing.Size(142, 25);
-            this.txtTotal.TabIndex = 3;
+            this.txtTotal.TabIndex = 222;
             this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtFreight
@@ -284,7 +285,7 @@ namespace SalesWinApp
             this.txtFreight.Location = new System.Drawing.Point(126, 117);
             this.txtFreight.Name = "txtFreight";
             this.txtFreight.Size = new System.Drawing.Size(142, 25);
-            this.txtFreight.TabIndex = 3;
+            this.txtFreight.TabIndex = 222;
             this.txtFreight.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbRequiredDate
@@ -294,7 +295,7 @@ namespace SalesWinApp
             this.lbRequiredDate.Location = new System.Drawing.Point(420, 69);
             this.lbRequiredDate.Name = "lbRequiredDate";
             this.lbRequiredDate.Size = new System.Drawing.Size(108, 19);
-            this.lbRequiredDate.TabIndex = 0;
+            this.lbRequiredDate.TabIndex = 222;
             this.lbRequiredDate.Text = "Required Date";
             // 
             // lbFreight
@@ -304,7 +305,7 @@ namespace SalesWinApp
             this.lbFreight.Location = new System.Drawing.Point(24, 118);
             this.lbFreight.Name = "lbFreight";
             this.lbFreight.Size = new System.Drawing.Size(57, 19);
-            this.lbFreight.TabIndex = 0;
+            this.lbFreight.TabIndex = 444;
             this.lbFreight.Text = "Freight";
             // 
             // txtOrderDate
@@ -315,7 +316,7 @@ namespace SalesWinApp
             this.txtOrderDate.Name = "txtOrderDate";
             this.txtOrderDate.ReadOnly = true;
             this.txtOrderDate.Size = new System.Drawing.Size(165, 25);
-            this.txtOrderDate.TabIndex = 2;
+            this.txtOrderDate.TabIndex = 222;
             this.txtOrderDate.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbOrderDate
@@ -325,7 +326,7 @@ namespace SalesWinApp
             this.lbOrderDate.Location = new System.Drawing.Point(420, 20);
             this.lbOrderDate.Name = "lbOrderDate";
             this.lbOrderDate.Size = new System.Drawing.Size(86, 19);
-            this.lbOrderDate.TabIndex = 0;
+            this.lbOrderDate.TabIndex = 333;
             this.lbOrderDate.Text = "Order Date";
             // 
             // txtOrderID
@@ -336,7 +337,7 @@ namespace SalesWinApp
             this.txtOrderID.Name = "txtOrderID";
             this.txtOrderID.ReadOnly = true;
             this.txtOrderID.Size = new System.Drawing.Size(142, 25);
-            this.txtOrderID.TabIndex = 1;
+            this.txtOrderID.TabIndex = 222;
             this.txtOrderID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbOrderID
@@ -346,7 +347,7 @@ namespace SalesWinApp
             this.lbOrderID.Location = new System.Drawing.Point(24, 20);
             this.lbOrderID.Name = "lbOrderID";
             this.lbOrderID.Size = new System.Drawing.Size(71, 19);
-            this.lbOrderID.TabIndex = 0;
+            this.lbOrderID.TabIndex = 444;
             this.lbOrderID.Text = "Order ID";
             // 
             // txtMemID
@@ -357,7 +358,7 @@ namespace SalesWinApp
             this.txtMemID.Name = "txtMemID";
             this.txtMemID.ReadOnly = true;
             this.txtMemID.Size = new System.Drawing.Size(142, 25);
-            this.txtMemID.TabIndex = 1;
+            this.txtMemID.TabIndex = 222;
             this.txtMemID.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbMemberID
@@ -367,7 +368,7 @@ namespace SalesWinApp
             this.lbMemberID.Location = new System.Drawing.Point(24, 69);
             this.lbMemberID.Name = "lbMemberID";
             this.lbMemberID.Size = new System.Drawing.Size(89, 19);
-            this.lbMemberID.TabIndex = 0;
+            this.lbMemberID.TabIndex = 444;
             this.lbMemberID.Text = "Member ID";
             // 
             // btnStatistic
@@ -377,7 +378,7 @@ namespace SalesWinApp
             this.btnStatistic.Location = new System.Drawing.Point(435, 326);
             this.btnStatistic.Name = "btnStatistic";
             this.btnStatistic.Size = new System.Drawing.Size(86, 30);
-            this.btnStatistic.TabIndex = 14;
+            this.btnStatistic.TabIndex = 10;
             this.btnStatistic.Text = "Statistic";
             this.btnStatistic.UseVisualStyleBackColor = true;
             this.btnStatistic.Click += new System.EventHandler(this.btnStatistic_Click);
@@ -389,8 +390,8 @@ namespace SalesWinApp
             this.btnAscSort.Location = new System.Drawing.Point(968, 112);
             this.btnAscSort.Name = "btnAscSort";
             this.btnAscSort.Size = new System.Drawing.Size(191, 30);
-            this.btnAscSort.TabIndex = 18;
-            this.btnAscSort.Text = "Sort Date Ascending";
+            this.btnAscSort.TabIndex = 5;
+            this.btnAscSort.Text = "Sort Total Ascending";
             this.btnAscSort.UseVisualStyleBackColor = true;
             this.btnAscSort.Click += new System.EventHandler(this.btnAscSort_Click);
             // 
@@ -403,7 +404,7 @@ namespace SalesWinApp
             this.lbFStore.Location = new System.Drawing.Point(467, 9);
             this.lbFStore.Name = "lbFStore";
             this.lbFStore.Size = new System.Drawing.Size(309, 40);
-            this.lbFStore.TabIndex = 17;
+            this.lbFStore.TabIndex = 333;
             this.lbFStore.Text = "Order management";
             // 
             // btnDescSort
@@ -413,8 +414,8 @@ namespace SalesWinApp
             this.btnDescSort.Location = new System.Drawing.Point(968, 157);
             this.btnDescSort.Name = "btnDescSort";
             this.btnDescSort.Size = new System.Drawing.Size(191, 30);
-            this.btnDescSort.TabIndex = 19;
-            this.btnDescSort.Text = "Sort Date Descending";
+            this.btnDescSort.TabIndex = 6;
+            this.btnDescSort.Text = "Sort Total Descending";
             this.btnDescSort.UseVisualStyleBackColor = true;
             this.btnDescSort.Click += new System.EventHandler(this.btnDescSort_Click);
             // 
@@ -425,7 +426,7 @@ namespace SalesWinApp
             this.txtTotalStatistic.Location = new System.Drawing.Point(275, 329);
             this.txtTotalStatistic.Name = "txtTotalStatistic";
             this.txtTotalStatistic.Size = new System.Drawing.Size(145, 25);
-            this.txtTotalStatistic.TabIndex = 22;
+            this.txtTotalStatistic.TabIndex = 9;
             this.txtTotalStatistic.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbStart
@@ -442,7 +443,7 @@ namespace SalesWinApp
             // 
             this.lbEnd.AutoSize = true;
             this.lbEnd.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.lbEnd.Location = new System.Drawing.Point(148, 297);
+            this.lbEnd.Location = new System.Drawing.Point(141, 297);
             this.lbEnd.Name = "lbEnd";
             this.lbEnd.Size = new System.Drawing.Size(72, 19);
             this.lbEnd.TabIndex = 232;
@@ -454,7 +455,7 @@ namespace SalesWinApp
             this.txtStart.Location = new System.Drawing.Point(15, 331);
             this.txtStart.Name = "txtStart";
             this.txtStart.Size = new System.Drawing.Size(79, 25);
-            this.txtStart.TabIndex = 3;
+            this.txtStart.TabIndex = 7;
             // 
             // txtEnd
             // 
@@ -462,13 +463,24 @@ namespace SalesWinApp
             this.txtEnd.Location = new System.Drawing.Point(141, 331);
             this.txtEnd.Name = "txtEnd";
             this.txtEnd.Size = new System.Drawing.Size(79, 25);
-            this.txtEnd.TabIndex = 3;
+            this.txtEnd.TabIndex = 8;
+            // 
+            // lbMoney
+            // 
+            this.lbMoney.AutoSize = true;
+            this.lbMoney.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.lbMoney.Location = new System.Drawing.Point(275, 297);
+            this.lbMoney.Name = "lbMoney";
+            this.lbMoney.Size = new System.Drawing.Size(106, 19);
+            this.lbMoney.TabIndex = 232;
+            this.lbMoney.Text = "Money (VND)";
             // 
             // frmOrderManagement
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1184, 661);
+            this.Controls.Add(this.lbMoney);
             this.Controls.Add(this.lbEnd);
             this.Controls.Add(this.lbStart);
             this.Controls.Add(this.txtTotalStatistic);
@@ -540,5 +552,6 @@ namespace SalesWinApp
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column5;
         private DataGridViewTextBoxColumn Column6;
+        private Label lbMoney;
     }
 }
