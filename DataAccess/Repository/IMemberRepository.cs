@@ -13,5 +13,6 @@ namespace DataAccess.Repository
         public void UpdateMember(MemberObject mem);
         public MemberObject GetMemberByEmail(string email);
         public List<MemberObject> GetMemberByIDAndEmail(int id, string email);
+        public MemberObject GetMemberForeignKey(int id);
     }
 }

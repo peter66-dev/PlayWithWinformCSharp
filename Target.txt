@@ -1,0 +1,27 @@
+Học:
+Hiểu bao quát về ngôn ngữ
+Cách vận hành
+Siêng, tập làm quen syntax
+
+
+
+Đi làm:
+giao tiếp -> kĩ thuật(trình bày snghi)
+viết documentation -> ghi word cho ngta biết
+thích nghi & siêng
+chú tâm mình học, mình làm gì
+
+
+
+phỏng vấn:
+MVC là gì, khi nào nên xài
+BST là gì
+so sánh C vs Java
+
+
+
+
+
+
+
+

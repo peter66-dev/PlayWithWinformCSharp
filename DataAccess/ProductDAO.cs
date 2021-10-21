@@ -226,6 +226,41 @@ namespace DataAccess
             }
             return list;
         }
+
+        public ProductObject GetProductForeignKey(int proID)
+        {
+            ProductObject pro = new ProductObject();
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("select ProductID, CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from [Product] " +
+                "where ProductId in (select ProductId from [OrderDetail] where ProductID = @ProductID) ", connection);
+            command.Parameters.AddWithValue("@ProductID",proID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        pro.ProductID = reader.GetInt32("ProductID");
+                        pro.CategoryID = reader.GetInt32("CategoryID");
+                        pro.ProductName = reader.GetString("ProductName");
+                        pro.Weight = reader.GetString("Weight");
+                        pro.UnitPrice = Math.Round(reader.GetDecimal("UnitPrice"), 2);
+                        pro.UnitsInStock = reader.GetInt32("UnitsInStock");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return pro;
+        }
         public ProductObject GetProductByIDAndName(int id, string name)
         {
             connection = new SqlConnection(GetConnectionString());

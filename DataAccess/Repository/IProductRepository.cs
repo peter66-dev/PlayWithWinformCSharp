@@ -26,6 +26,6 @@ namespace DataAccess.Repository
         public List<string> CheckQuantity(List<ProductObject> cart);
 
         public void SubQuantityProduct(List<ProductObject> cart);
-
+        public ProductObject GetProductForeignKey(int id);
     }
 }

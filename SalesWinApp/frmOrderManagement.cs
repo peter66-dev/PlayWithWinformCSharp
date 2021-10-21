@@ -188,8 +188,8 @@ namespace SalesWinApp
                         $"Load again to see the new list", "Error message",
                     MessageBoxButtons.OK);
                     */
-                    MessageBox.Show($"Sorry, you can not delete this Order ID: {orderID} ,Product ID: {productID}\n" +
-                        $"Because it's a foreign key of another table!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    MessageBox.Show($"Sorry, Admin can not delete this Order ID: {orderID} ,Product ID: {productID}\n" +
+                        $"Because this data can reuse with another purpose!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)

@@ -16,5 +16,6 @@ namespace DataAccess.Repository
         public IEnumerable<MemberObject> GetMembers() => MemberDAO.Instance.GetMemberList();
         public void InsertMember(MemberObject mem) => MemberDAO.Instance.InsertMember(mem);
         public void UpdateMember(MemberObject mem) => MemberDAO.Instance.UpdateMember(mem);
+        public MemberObject GetMemberForeignKey(int id) => MemberDAO.Instance.GetMemberForeignKey(id);
     }
 }

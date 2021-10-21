@@ -177,22 +177,32 @@ namespace SalesWinApp
             var mem = GetMemberObject();
             if (MessageBox.Show($"Are you sure to delete member name: {mem.Email}?", "Confirm message", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                try
+                if (memRepository.GetMemberForeignKey(mem.MemberID).MemberID == 0) // Không bị ảnh hưởng khóa ngoại với bảng Order
                 {
-                    source.Position = 0;
-                    memRepository.DeleteMember(mem.MemberID);
-                    members = memRepository.GetMembers();
-                    LoadMemberList(members);
-                    if (memRepository.GetMembers().Count() == 1)
+                    try
                     {
-                        btnDelete.Enabled = false;
-                        MessageBox.Show("We have only 1 member existing in list, now. Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        source.Position = 0;
+                        memRepository.DeleteMember(mem.MemberID);
+                        members = memRepository.GetMembers();
+                        LoadMemberList(members);
+                        if (memRepository.GetMembers().Count() == 1)
+                        {
+                            btnDelete.Enabled = false;
+                            MessageBox.Show("We have only 1 member existing in list, now. Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Delete a member", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Delete a member", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Can delete this Member because it's foreign key of Order table in sql server!",
+                                        "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // KHÔNG CHO DELETE VÌ MEMBER ĐANG LÀM KHÓA NGOẠI BÊN ORDER
                 }
+
             }
         }
 

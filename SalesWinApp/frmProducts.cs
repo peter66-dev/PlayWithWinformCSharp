@@ -194,41 +194,45 @@ namespace SalesWinApp
             if (MessageBox.Show($"Are you sure to delete product name: {pro.ProductName}?",
                     "Confirm message", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
-                MessageBox.Show("Can delete this product because it's foreign key of another table in sql server!",
-                    "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                // KHÔNG CHO DELETE VÌ CÁC SẢN PHẦM ĐANG LÀM KHÓA NGOẠI BÊN KIA
-                /*
-                try
+                if (proRepository.GetProductForeignKey(pro.ProductID).CategoryID == 0)// không có ảnh hưởng khóa ngoại
                 {
-                    source.Position = 0;
-                    proRepository.DeleteProduct(pro.ProductID);
-                    products = proRepository.GetProducts();
-                    LoadProductList(products);
-                    dgvProductList.Columns["ProductID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["CategoryID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["ProductName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-                    dgvProductList.Columns["Weight"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["UnitPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-                    dgvProductList.Columns["UnitsInStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-                    dgvProductList.Columns["ProductID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["CategoryID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["ProductName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["Weight"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["UnitPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    dgvProductList.Columns["UnitsInStock"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
-                    if (proRepository.GetProducts().Count() == 1)
+                    try
                     {
-                        btnDelete.Enabled = false;
-                        MessageBox.Show("We have only 1 product existing in list, now.\n" +
-                            "Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        source.Position = 0;
+                        proRepository.DeleteProduct(pro.ProductID);
+                        products = proRepository.GetProducts();
+                        LoadProductList(products);
+                        dgvProductList.Columns["ProductID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["CategoryID"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["ProductName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        dgvProductList.Columns["Weight"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["UnitPrice"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+                        dgvProductList.Columns["UnitsInStock"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+                        dgvProductList.Columns["ProductID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["CategoryID"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["ProductName"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["Weight"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["UnitPrice"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        dgvProductList.Columns["UnitsInStock"].HeaderCell.Style.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                        if (proRepository.GetProducts().Count() == 1)
+                        {
+                            btnDelete.Enabled = false;
+                            MessageBox.Show("We have only 1 product existing in list, now.\n" +
+                                "Please don't remove it!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Delete a Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message, "Delete a Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Can delete this product because it's foreign key of OrderDetail table in sql server!",
+                                        "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    // KHÔNG CHO DELETE VÌ CÁC SẢN PHẦM ĐANG LÀM KHÓA NGOẠI BÊN KIA
                 }
-                */
             }
         }
 

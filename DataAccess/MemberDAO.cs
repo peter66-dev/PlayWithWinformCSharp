@@ -80,6 +80,41 @@ namespace DataAccess.Repository
             return mem;
         }
 
+        public MemberObject GetMemberForeignKey(int id)
+        {
+            connection = new SqlConnection(GetConnectionString());
+            command = new SqlCommand("Select Email, Companyname, City, Country, Password from [Member] " +
+                "where MemberId in (select MemberId from [order] where MemberID = @memberid)", connection);
+            command.Parameters.AddWithValue("@memberid", id);
+            MemberObject mem = new MemberObject();
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
+                if (reader.HasRows)
+                {
+                    if (reader.Read())
+                    {
+                        mem.MemberID = id;
+                        mem.Email = reader.GetString("Email").Trim();
+                        mem.CompanyName = reader.GetString("CompanyName").Trim();
+                        mem.City = reader.GetString("City").Trim();
+                        mem.Country = reader.GetString("Country").Trim();
+                        mem.Password = reader.GetString("Password").Trim();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+            finally
+            {
+                connection.Close();
+            }
+            return mem;
+        }
+
         public MemberObject GetMemberByEmail(string email)
         {
             connection = new SqlConnection(GetConnectionString());

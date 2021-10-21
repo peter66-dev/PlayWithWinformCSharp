@@ -26,5 +26,7 @@ namespace DataAccess.Repository
         public void SubQuantityProduct(List<ProductObject> cart) => ProductDAO.Instance.SubQuantityProduct(cart);
 
         public void UpdateProduct(ProductObject pro) => ProductDAO.Instance.UpdateProduct(pro);
+
+        public ProductObject GetProductForeignKey(int id) => ProductDAO.Instance.GetProductForeignKey(id);
     }
 }
