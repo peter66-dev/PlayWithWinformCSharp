@@ -231,7 +231,6 @@ namespace SalesWinApp
             {
                 MessageBox.Show("Sorry, Member ID must be number!", "Message", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
         }
 
         private void btnAscSort_Click(object sender, EventArgs e)
@@ -254,7 +253,6 @@ namespace SalesWinApp
         {
             Close();
         }
-
         private void frmMembers_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (MessageBox.Show("Are you sure to quit?", "Confirm information", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.No)

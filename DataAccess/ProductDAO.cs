@@ -5,9 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.IO;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
@@ -30,6 +28,7 @@ namespace DataAccess
                 }
             }
         }
+
         SqlConnection connection;
         SqlCommand command;
         //string ConnectionString = "Server=(local);uid=sa;pwd=sa;database=FStore";
@@ -51,7 +50,7 @@ namespace DataAccess
             try
             {
                 connection.Open();
-                SqlDataReader reader = command.ExecuteReader(System.Data.CommandBehavior.CloseConnection);
+                SqlDataReader reader = command.ExecuteReader(CommandBehavior.CloseConnection);
                 if (reader.HasRows)
                 {
                     while (reader.Read())
@@ -233,7 +232,7 @@ namespace DataAccess
             connection = new SqlConnection(GetConnectionString());
             command = new SqlCommand("select ProductID, CategoryID, ProductName, Weight, UnitPrice, UnitsInStock from [Product] " +
                 "where ProductId in (select ProductId from [OrderDetail] where ProductID = @ProductID) ", connection);
-            command.Parameters.AddWithValue("@ProductID",proID);
+            command.Parameters.AddWithValue("@ProductID", proID);
             try
             {
                 connection.Open();
